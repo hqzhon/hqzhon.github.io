@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-09-30T08:50:49.000Z</updated>
+  <updated>2015-09-30T09:31:15.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[单例模式（Singleton）]]></title>
+    <title><![CDATA[java单例模式（Singleton）]]></title>
     <link href="http://yoursite.com/2015/09/30/Singleton/"/>
     <id>http://yoursite.com/2015/09/30/Singleton/</id>
     <published>2015-09-30T08:09:46.000Z</published>
-    <updated>2015-09-30T08:50:49.000Z</updated>
+    <updated>2015-09-30T09:31:15.000Z</updated>
     <content type="html"><![CDATA[<p>java中的单例模式简介.</p>
 <h2 id="六种单例模式实现">六种单例模式实现</h2><h3 id="1-_懒汉式">1. 懒汉式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;  </span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance; </span><br><span class="line">       <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125;  </span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">           <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;  </span><br><span class="line">               instance = <span class="keyword">new</span> Singleton();  </span><br><span class="line">           &#125;  </span><br><span class="line">           <span class="keyword">return</span> instance;  </span><br><span class="line">       &#125;  </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="2-_饿汉式">2. 饿汉式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getinstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">               instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> instance;</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -34,7 +34,7 @@
 <h2 id="六种单例模式实现">六种单例模式实现</h2><h3 id="1-_懒汉式">1. 懒汉式</h3><figure class="highlight java"><table><tr><td class="gutter">]]>
     </summary>
     
-      <category term="java 设计模式 多线程 单例" scheme="http://yoursite.com/tags/java-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%8D%95%E4%BE%8B/"/>
+      <category term="Singleton 单例 设计模式 多线程" scheme="http://yoursite.com/tags/Singleton-%E5%8D%95%E4%BE%8B-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
