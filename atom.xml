@@ -4,7 +4,7 @@
   <subtitle><![CDATA[如果方向错了，停下来就是前进。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-10-04T08:52:16.000Z</updated>
+  <updated>2015-10-04T12:32:12.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2015/09/30/Singleton/"/>
     <id>http://yoursite.com/2015/09/30/Singleton/</id>
     <published>2015-09-30T08:09:46.000Z</published>
-    <updated>2015-10-04T08:52:16.000Z</updated>
+    <updated>2015-10-04T12:32:12.000Z</updated>
     <content type="html"><![CDATA[<p>最近在测试的时候遇到几个关于多线程的问题，其实频繁涉及单例模式相关的问题，因此翻看文章和资料总结了本篇文档，做为后续的学习和工作参考。<br><a id="more"></a></p>
 <h2 id="一-_单例模式简介">一. 单例模式简介</h2><h3 id="单例模式是用来创建独一无二的，只有一个实例的对象的模式-使用单例模式创建一个模型，它确保只产生一个实例，并提供一个访问它的全局访问点。">单例模式是用来创建独一无二的，只有一个实例的对象的模式.使用单例模式创建一个模型，它确保只产生一个实例，并提供一个访问它的全局访问点。</h3><h3 id="1-_为什么使用单例模式？">1. 为什么使用单例模式？</h3><p>部分对象使用过程中只能有一个实例，如果制造出多个，会导致很多问题，如程序的行为异常，资源使用过量和数据不一致的情况。</p>
 <h3 id="2-_静态变量实现单例的缺点">2. 静态变量实现单例的缺点</h3><p>静态全局变量可以实现单例，但是这样必须在程序一开始就创建好对象，如果对象创建非常耗时，这会导致程序初始化过慢，同时如果执行过程中没有使用过，也会导致资源的浪费。</p>
@@ -48,7 +48,7 @@
     
       <category term="Singleton" scheme="http://yoursite.com/tags/Singleton/"/>
     
-      <category term="java基础" scheme="http://yoursite.com/tags/java%E5%9F%BA%E7%A1%80/"/>
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
       <category term="单例模式" scheme="http://yoursite.com/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     
