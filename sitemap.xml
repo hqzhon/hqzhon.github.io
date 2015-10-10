@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2015/10/10/LowSpace/</loc>
+    <lastmod>2015-10-10T09:57:39.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2015/10/05/ReflectionSingleTon/</loc>
     <lastmod>2015-10-05T13:07:10.000Z</lastmod>
   </url>

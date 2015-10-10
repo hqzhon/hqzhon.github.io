@@ -4,7 +4,7 @@
   <subtitle><![CDATA[如果方向错了，停下来就是前进。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-10-05T13:07:10.000Z</updated>
+  <updated>2015-10-10T09:57:39.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Linux中/var空间不足的解决办法]]></title>
+    <link href="http://yoursite.com/2015/10/10/LowSpace/"/>
+    <id>http://yoursite.com/2015/10/10/LowSpace/</id>
+    <published>2015-10-10T09:57:39.000Z</published>
+    <updated>2015-10-10T09:57:39.000Z</updated>
+    <content type="html"><![CDATA[<p>在Linux的使用过程中，如果/var单独分区，但是指定的空间不大，在更新系统或者安装大型软件（如搭建Discourse论坛平台）的时候，使用到了该目录，就可能导致提示空间不足的情况。本文介绍部分解决办法。<br><a id="more"></a></p>
+<h3 id="1-_清理自动安装但不再使用的软件">1. 清理自动安装但不再使用的软件</h3><p>使用以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get clean</span><br><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure></p>
+<p>autoremove的作用是卸载所有自动安装且不再使用的软件包。<br>autoremove这种方式容易将必要的软件删除掉，尽量不要使用。</p>
+<h3 id="2-_使用软链接指向富足的空间区块">2. 使用软链接指向富足的空间区块</h3><p>首先了解下Linux链接的概念。<br>链接是为某一个文件在另外一个位置建立一个不同的链接，分为硬链接和软链接。<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Linux软链接：它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，命令：<span class="built_in">ln</span> －s xxx</span><br><span class="line">Linux硬链接：它会在你选定的位置上生成一个和源文件大小相同的文件，命令：<span class="built_in">ln</span> xxx</span><br></pre></td></tr></table></figure></p>
+<p>无论是软链接还是硬链接，文件都保持同步变化。<br>因此，使用软链接可以将/var目录下占用空间较大的目录移动到富足的空间区块（如/home）下，使得/var下不再占用空间。<br>具体实现（www目录为例）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv /var/www /home   <span class="comment">#将var下的www目录移动到home或者其他空间富足的区块中</span></span><br><span class="line">ln －s  /home/www /var  <span class="comment">#/var/www指向/home/www，这样www目录将不再占用/var目录的空间</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-_未单独分区情况">3. 未单独分区情况</h3><p>如果/var没有单独分区，则系统默认共享使用/home目录，若此时提示/var空间不足，则说明/home空间不足，这种情况可以清理一下/home目录或者重新安装系统，重新规划分区结构，当然使用软链接方式也是可以的，只要还有其他空间富足的区块。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在Linux的使用过程中，如果/var单独分区，但是指定的空间不大，在更新系统或者安装大型软件（如搭建Discourse论坛平台）的时候，使用到了该目录，就可能导致提示空间不足的情况。本文介绍部分解决办法。<br>]]>
+    
+    </summary>
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="空间不足" scheme="http://yoursite.com/tags/%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%B6%B3/"/>
+    
+      <category term="软链接" scheme="http://yoursite.com/tags/%E8%BD%AF%E9%93%BE%E6%8E%A5/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[通过反射创建单例模式的另一个实例]]></title>
