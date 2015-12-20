@@ -4,7 +4,7 @@
   <subtitle><![CDATA[如果方向错了，停下来就是前进。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-12-20T01:21:03.000Z</updated>
+  <updated>2015-12-20T01:35:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,8 +18,8 @@
     <title><![CDATA[登录问题定位过程之unbuntu输入正确密码后重新返回登录界面]]></title>
     <link href="http://yoursite.com/2015/12/20/Login/"/>
     <id>http://yoursite.com/2015/12/20/Login/</id>
-    <published>2015-12-20T01:21:03.000Z</published>
-    <updated>2015-12-20T01:21:03.000Z</updated>
+    <published>2015-12-20T01:35:00.000Z</published>
+    <updated>2015-12-20T01:35:00.000Z</updated>
     <content type="html"><![CDATA[<p>上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程。<br><a id="more"></a></p>
 <h2 id="文件权限问题">文件权限问题</h2><p>google搜索发现跟登录相关的文件是用户根目录下的.Xauthority文件，如果没有这个文件的读取权限就会出现“输入正确密码后重新返回登录界面”的问题。解决方法：</p>
 <ul>
@@ -64,7 +64,7 @@
     
       <category term="登录问题，问题定位" scheme="http://yoursite.com/tags/%E7%99%BB%E5%BD%95%E9%97%AE%E9%A2%98%EF%BC%8C%E9%97%AE%E9%A2%98%E5%AE%9A%E4%BD%8D/"/>
     
-      <category term="［unbuntu,linux］" scheme="http://yoursite.com/categories/%EF%BC%BBunbuntu-linux%EF%BC%BD/"/>
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
     
   </entry>
   
