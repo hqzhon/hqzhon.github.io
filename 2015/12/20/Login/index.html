@@ -40,10 +40,10 @@
 <meta name="description" content="上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面">
-<meta property="og:url" content="http://yoursite.com/2015/12/19/Login/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/12/20/Login/index.html">
 <meta property="og:site_name" content="测试小站">
 <meta property="og:description" content="上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程">
-<meta property="og:updated_time" content="2015-12-19T15:37:57.000Z">
+<meta property="og:updated_time" content="2015-12-20T00:53:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面">
 <meta name="twitter:description" content="上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程">
@@ -168,8 +168,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-12-19T23:37:57+08:00" content="2015-12-19">
-            2015-12-19
+          <time itemprop="dateCreated" datetime="2015-12-20T08:53:57+08:00" content="2015-12-20">
+            2015-12-20
           </time>
         </span>
 
@@ -190,8 +190,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/12/19/Login/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/19/Login/" itemprop="commentsCount"></span>
+              <a href="/2015/12/20/Login/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/20/Login/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -208,26 +208,26 @@
         <span itemprop="articleBody"><p>上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程。<br><a id="more"></a></p>
 <h2 id="文件权限问题">文件权限问题</h2><p>google搜索发现跟登录相关的文件是用户根目录下的.Xauthority文件，如果没有这个文件的读取权限就会出现“输入正确密码后重新返回登录界面”的问题。解决方法：</p>
 <ul>
-<li>ctrl＋alt＋f1切换到终端模式</li>
+<li>ctrl＋alt＋f1切换到命令行模式</li>
 <li>使用正确的用户名密码登录。</li>
 <li>在home下查看该文件权限：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls －al .Xauthority</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>很奇怪，上面的ls命令提示找不到了，好吧，看来是环境变量失效了，那就自己设定一个环境变量吧。执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/<span class="built_in">local</span>/games</span><br></pre></td></tr></table></figure></p>
+<p>很奇怪，执行ls命令提示找不到，说明出问题的机器找不到/bin/ls文件，看来是环境变量失效了，那就自己设定一个环境变量吧，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/<span class="built_in">local</span>/games</span><br></pre></td></tr></table></figure></p>
 <p>再次执行ls命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls －al .Xauthority</span><br><span class="line">-rw-－--－--  <span class="number">1</span> staff  staff  <span class="number">2727</span> Mar <span class="number">21</span>  <span class="number">2015</span> .Xauthority</span><br></pre></td></tr></table></figure></p>
 <p>上述结果显示文件是登录用户staff的，它有读写权限，因此没有问题，排除这种情况。<br>当然如果真的是这个问题可以执行以下命令解决<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown staff:staff .Xauthority</span><br></pre></td></tr></table></figure></p>
 <h2 id="文件问题（-Xauthority）">文件问题（.Xauthority）</h2><p>继续google我们发现另一种解决办法：</p>
 <ul>
-<li>ctrl＋alt＋f1切换到终端模式</li>
+<li>ctrl＋alt＋f1切换到命令行模式</li>
 <li>rm -rf .Xauthority</li>
 <li>ctrl＋alt＋f7切换回登录窗口</li>
 <li>输入用户名密码登录<br>按照上述方法执行一次，问题依旧，无奈!</li>
 </ul>
-<h2 id="分析登录日志">分析登录日志</h2><p>以上方法都失效了，继续盲目的google看来意义不大。我们想到了系统日志，说干就干，再次进入终端模式，查看文件/usr/log/auth.log。<br>通过auth.log的错误日志，我们花了近2小时尝试了很多办法，比较有代表性的解决方案有：<br>(1) 更新系统插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update </span><br><span class="line">$ sudo apt-get upgrade</span><br></pre></td></tr></table></figure></p>
+<h2 id="分析登录日志">分析登录日志</h2><p>以上方法都失效了，继续盲目的google看来意义不大。我们想到了系统日志，说干就干，再次进入命令行模式，查看文件/usr/log/auth.log。<br>通过auth.log的错误日志，我们花了近2小时尝试了很多办法，比较有代表性的解决方案有：<br>(1) 更新系统插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update </span><br><span class="line">$ sudo apt-get upgrade</span><br></pre></td></tr></table></figure></p>
 <p>(2) 将部分系统插件会退到旧版本<br>尝试这两种方法是因为同事说在配置服务器的过程中点击了系统插件的更新，从错误日志中显示可能是插件不兼容导致。<br>(3) 更换桌面，切换成<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install xubuntu-desktop</span><br></pre></td></tr></table></figure></p>
 <p>怀疑是gnome桌面出问题了，安装新的桌面可以解决这类问题。<br>很不幸的是所有的解决办法都失败了，我们这时快要崩溃了。</p>
 <h2 id="回归现象，峰回路转">回归现象，峰回路转</h2><p>在长时间折腾不出解决方案后，我们暂时放弃了，喝喝水并出去溜达了一圈。路上不时的想起定位过程，很快我们注意到第一步中那个奇怪的现象：“ls命令找不到，环境变量实效了！”。我们知道linux启动的时候是默认会初始化环境变量的，即unbuntu默认环境变量中应该会有这个值：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/sbin:/</span>usr<span class="regexp">/local/</span><span class="string">bin:</span><span class="regexp">/sbin:/</span><span class="string">bin:</span><span class="regexp">/usr/</span><span class="string">sbin:</span><span class="regexp">/usr/</span><span class="string">bin:</span><span class="regexp">/usr/</span><span class="string">games:</span><span class="regexp">/usr/</span>local/games</span><br></pre></td></tr></table></figure></p>
-<p>ls命令执行失败了，那么说明出问题的机器找不到/bin/ls文件，因此很可能是环境变量PATH出问题了。<br>快速回到工位，查看机器上的环境变量，新登录一个终端，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ /bin/<span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/Users/staff/.jenkins/bin</span><br></pre></td></tr></table></figure></p>
+<p>快速回到工位，重启电脑，登录命令行模式，查看机器上的环境变量，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ /bin/<span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/Users/staff/.jenkins/bin</span><br></pre></td></tr></table></figure></p>
 <p>PATH竟然变成了“/Users/staff/.jenkins/bin”。查看jenkins安装指南，我们发现安装过程修改了系统文件/etc/profile，会向这个文件写入jenkins环境变量。查看之：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>cat /etc/profile</span><br><span class="line">... （去除不必要信息的干扰)</span><br><span class="line"><span class="constant">PATH</span>=<span class="regexp">/Users/staff</span><span class="regexp">/.jenkins/bin</span></span><br></pre></td></tr></table></figure></p>
 <p>至此，问题看来已经找到了，linux启动会加载/etc/profile文件配置，因此问题机器PATH会最后修改为“/Users/staff/.jenkins/bin”。而桌面登录时依赖默认的环境变量，因此导致我们输入正确的密码也无法登录。<br>解决这个问题，将那个PATH的赋值修改成下列形式，重启机器，输入用户名密码，成功进入系统，开心死我们了！<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">PATH</span>=<span class="variable">$PATH</span><span class="symbol">:/Users/staff/</span>.jenkins/bin</span><br></pre></td></tr></table></figure></p>
 <h2 id="问题总结">问题总结</h2><ul>
@@ -286,8 +286,8 @@
             
               <div class="comments" id="comments">
                 
-                  <div class="ds-thread" data-thread-key="2015/12/19/Login/"
-                       data-title="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面" data-url="http://yoursite.com/2015/12/19/Login/">
+                  <div class="ds-thread" data-thread-key="2015/12/20/Login/"
+                       data-title="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面" data-url="http://yoursite.com/2015/12/20/Login/">
                   </div>
                 
               </div>
