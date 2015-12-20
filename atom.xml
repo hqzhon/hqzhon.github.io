@@ -4,7 +4,7 @@
   <subtitle><![CDATA[如果方向错了，停下来就是前进。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-12-20T00:53:57.000Z</updated>
+  <updated>2015-12-20T01:21:03.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,8 +18,8 @@
     <title><![CDATA[登录问题定位过程之unbuntu输入正确密码后重新返回登录界面]]></title>
     <link href="http://yoursite.com/2015/12/20/Login/"/>
     <id>http://yoursite.com/2015/12/20/Login/</id>
-    <published>2015-12-20T00:53:57.000Z</published>
-    <updated>2015-12-20T00:53:57.000Z</updated>
+    <published>2015-12-20T01:21:03.000Z</published>
+    <updated>2015-12-20T01:21:03.000Z</updated>
     <content type="html"><![CDATA[<p>上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程。<br><a id="more"></a></p>
 <h2 id="文件权限问题">文件权限问题</h2><p>google搜索发现跟登录相关的文件是用户根目录下的.Xauthority文件，如果没有这个文件的读取权限就会出现“输入正确密码后重新返回登录界面”的问题。解决方法：</p>
 <ul>
@@ -44,11 +44,13 @@
 <h2 id="回归现象，峰回路转">回归现象，峰回路转</h2><p>在长时间折腾不出解决方案后，我们暂时放弃了，喝喝水并出去溜达了一圈。路上不时的想起定位过程，很快我们注意到第一步中那个奇怪的现象：“ls命令找不到，环境变量实效了！”。我们知道linux启动的时候是默认会初始化环境变量的，即unbuntu默认环境变量中应该会有这个值：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/sbin:/</span>usr<span class="regexp">/local/</span><span class="string">bin:</span><span class="regexp">/sbin:/</span><span class="string">bin:</span><span class="regexp">/usr/</span><span class="string">sbin:</span><span class="regexp">/usr/</span><span class="string">bin:</span><span class="regexp">/usr/</span><span class="string">games:</span><span class="regexp">/usr/</span>local/games</span><br></pre></td></tr></table></figure></p>
 <p>快速回到工位，重启电脑，登录命令行模式，查看机器上的环境变量，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ /bin/<span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/Users/staff/.jenkins/bin</span><br></pre></td></tr></table></figure></p>
 <p>PATH竟然变成了“/Users/staff/.jenkins/bin”。查看jenkins安装指南，我们发现安装过程修改了系统文件/etc/profile，会向这个文件写入jenkins环境变量。查看之：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>cat /etc/profile</span><br><span class="line">... （去除不必要信息的干扰)</span><br><span class="line"><span class="constant">PATH</span>=<span class="regexp">/Users/staff</span><span class="regexp">/.jenkins/bin</span></span><br></pre></td></tr></table></figure></p>
-<p>至此，问题看来已经找到了，linux启动会加载/etc/profile文件配置，因此问题机器PATH会最后修改为“/Users/staff/.jenkins/bin”。而桌面登录时依赖默认的环境变量，因此导致我们输入正确的密码也无法登录。<br>解决这个问题，将那个PATH的赋值修改成下列形式，重启机器，输入用户名密码，成功进入系统，开心死我们了！<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">PATH</span>=<span class="variable">$PATH</span><span class="symbol">:/Users/staff/</span>.jenkins/bin</span><br></pre></td></tr></table></figure></p>
+<p>至此，问题看来已经找到了，linux启动会加载/etc/profile文件配置，因此问题机器PATH会最后修改为“/Users/staff/.jenkins/bin”。而桌面登录时依赖默认的环境变量，因此导致我们输入正确的密码也无法登录。<br>解决方法：将/etc/profile文件中PATH的赋值修改成下列形式。<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">PATH</span>=<span class="variable">$PATH</span><span class="symbol">:/Users/staff/</span>.jenkins/bin</span><br></pre></td></tr></table></figure></p>
+<p>重启机器，输入用户名密码，成功进入系统。</p>
 <h2 id="问题总结">问题总结</h2><ul>
 <li>定位过程其实走了很多弯路，而关键现象却选择性忽略了，不过借此机会也复习和学习了好些linux相关的配置和命令。</li>
 <li>linux系统文件非常敏感，修改时需特别注意<br>系统出问题了，极大的可能是修改了系统文件，因此，一个良好的习惯是系统文件修改前对文件进行备份，然后再进行修改，出问题后直接回滚往往可以马上解决问题。</li>
 <li>当问题出现时，先分析全面问题的现象，然后再想解决方案<br>google大法确实很不错，但是如果盲目的搜索只会让问题更乱，折腾的更辛苦。但是如果分析清楚了现象，有时候自直接就能定位出问题，即使依赖google，现象清楚全面，搜索结果也会更加准确，需要1天解决的问题或许1小时（甚至更短时间）就搞定了。</li>
+<li>问题定位没有头绪了，暂时抛开，或许会有新思路。<br>苏轼说：“不识庐山真面目，只缘身在此山中”，当我们困扰于问题时，可能我们已经纠结于问题的细枝末节了，而不能看到问题的全貌，这时走出庐山（暂时抛开），从不一样的角度去看它时，往往会有意外的收获。</li>
 </ul>
 ]]></content>
     <summary type="html">
