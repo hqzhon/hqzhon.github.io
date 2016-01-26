@@ -4,7 +4,7 @@
   <subtitle><![CDATA[如果方向错了，停下来就是前进。]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-12-30T15:08:41.000Z</updated>
+  <updated>2016-01-26T05:09:49.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[infer静态代码扫描不能执行问题定位]]></title>
+    <link href="http://yoursite.com/2016/01/26/infer/"/>
+    <id>http://yoursite.com/2016/01/26/infer/</id>
+    <published>2016-01-26T05:09:49.000Z</published>
+    <updated>2016-01-26T05:09:49.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="什么是infer">什么是infer</h2><p>facebook推出的静态代码检测工具，可以检测android和IOS应用的内存泄露和空指针问题。<br><a id="more"></a></p>
+<h2 id="官方文档">官方文档</h2><ul>
+<li><a href="http://fbinfer.com/" target="_blank" rel="external">infer官方介绍</a></li>
+<li><a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">infer编译和安装方法</a></li>
+</ul>
+<h2 id="本文解决问题">本文解决问题</h2><p>使用源码安装的整个过程没有报错，在执行的时候会出现这个错误：<br><strong>Failed to run InferAnalyze binary, exiting</strong></p>
+<h2 id="解决过程">解决过程</h2><p>Google解决方案大部分反馈结果如下：</p>
+<p>About the “Failed to run InferAnalyze binary, exiting” error, you have to compile the binaries of Infer first, please follow the instructions <a href="http://fbinfer.com/docs/getting-started.html" target="_blank" rel="external">here</a>.</p>
+<p>上面的结果让我们先编译infer二进制源码，很奇怪，我们其实进行源码安装的时候<strong>已经编译过了，而且没有报错</strong>。<br>按照上面的方式重新执行错误结果一致。</p>
+<p>回头想想，为什么大部分结果会让我们回去编译？<br>重新翻看Facebook给出的<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">infer编译和安装方法</a>,我们发现大部分该执行的命令都已经执行过了，但是有个比较陌生的插件opam，<strong>它是单独安装的</strong>。<br>会不会是它有什么依赖呢？<br>顺着这个思路很自然在<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">infer编译和安装方法</a>中找到了下面这段话<br><strong>Install Infer from source without opam</strong><br>If for some reason you prefer to install Infer’s OCaml dependencies by some means other than opam, you can still compile Infer by running:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./autogen.sh</span><br><span class="line">./configure</span><br><span class="line">make # or make java</span><br><span class="line"># <span class="operator"><span class="keyword">Install</span> Infer <span class="keyword">into</span> your <span class="keyword">PATH</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">PATH</span>=<span class="string">`pwd`</span>/infer/<span class="keyword">bin</span>:$<span class="keyword">PATH</span></span></span><br></pre></td></tr></table></figure></p>
+<p>执行上述脚本，注意执行./configure程序报错了，但是结果有很明显的提示让你执行：</p>
+<pre><code class="shell">opam pin add --yes --no-action .&#10;opam install --deps-only infer
+</code></pre>
+<p>顺着提示继续执行，发现执行opam install –deps-only infer命令的时候又出错了，但是它依然很人性化的提示你执行下列脚本：</p>
+<pre><code class="shell">opam depext camlp4.4.01+system
+</code></pre>
+<p>执行上述脚本后，将之前执行失败的脚本重新执行，不再出现报错了。<br>最后make编译会执行很长时间，等编译完成后就可以顺利执行infer静态检测内存泄露和空指针异常了。</p>
+<p><strong>注：</strong>在我的unbuntu机器上直接make会报错，因为我只关注Android项目，所以执行的是make java，这样一切正常，现在正在跑项目中。暂时未研究是什么原因导致的，有兴趣的可以一起去研究讨论。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="什么是infer">什么是infer</h2><p>facebook推出的静态代码检测工具，可以检测android和IOS应用的内存泄露和空指针问题。<br>]]>
+    
+    </summary>
+    
+      <category term="facebook" scheme="http://yoursite.com/tags/facebook/"/>
+    
+      <category term="infer" scheme="http://yoursite.com/tags/infer/"/>
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="静态代码扫描" scheme="http://yoursite.com/tags/%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E6%89%AB%E6%8F%8F/"/>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[javamail使用IMAP协议收取gmail邮件]]></title>

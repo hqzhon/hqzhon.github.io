@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="linux,unbuntu,登录问题，问题定位," />
+  <meta name="keywords" content="facebook,infer,java,静态代码扫描," />
 
 
 
@@ -37,16 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程">
+<meta name="description" content="什么是inferfacebook推出的静态代码检测工具，可以检测android和IOS应用的内存泄露和空指针问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面">
-<meta property="og:url" content="http://yoursite.com/2015/12/20/Login/index.html">
+<meta property="og:title" content="infer静态代码扫描不能执行问题定位">
+<meta property="og:url" content="http://yoursite.com/2016/01/26/infer/index.html">
 <meta property="og:site_name" content="测试小站">
-<meta property="og:description" content="上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程">
-<meta property="og:updated_time" content="2015-12-20T01:35:08.000Z">
+<meta property="og:description" content="什么是inferfacebook推出的静态代码检测工具，可以检测android和IOS应用的内存泄露和空指针问题。">
+<meta property="og:updated_time" content="2016-01-26T05:09:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面">
-<meta name="twitter:description" content="上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程">
+<meta name="twitter:title" content="infer静态代码扫描不能执行问题定位">
+<meta name="twitter:description" content="什么是inferfacebook推出的静态代码检测工具，可以检测android和IOS应用的内存泄露和空指针问题。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +56,7 @@
   };
 </script>
 
-    <title> 登录问题定位过程之unbuntu输入正确密码后重新返回登录界面 // 测试小站 </title>
+    <title> infer静态代码扫描不能执行问题定位 // 测试小站 </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -159,7 +159,7 @@
           
           
             
-              登录问题定位过程之unbuntu输入正确密码后重新返回登录界面
+              infer静态代码扫描不能执行问题定位
             
           
         </h1>
@@ -168,8 +168,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-12-20T09:35:08+08:00" content="2015-12-20">
-            2015-12-20
+          <time itemprop="dateCreated" datetime="2016-01-26T13:09:49+08:00" content="2016-01-26">
+            2016-01-26
           </time>
         </span>
 
@@ -177,7 +177,7 @@
           <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
 
               
               
@@ -190,8 +190,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/12/20/Login/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/20/Login/" itemprop="commentsCount"></span>
+              <a href="/2016/01/26/infer/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/26/infer/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -205,38 +205,24 @@
       
 
       
-        <span itemprop="articleBody"><p>上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程。<br><a id="more"></a></p>
-<h2 id="文件权限问题">文件权限问题</h2><p>google搜索发现跟登录相关的文件是用户根目录下的.Xauthority文件，如果没有这个文件的读取权限就会出现“输入正确密码后重新返回登录界面”的问题。解决方法：</p>
-<ul>
-<li>ctrl＋alt＋f1切换到命令行模式</li>
-<li>使用正确的用户名密码登录。</li>
-<li>在home下查看该文件权限：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls －al .Xauthority</span><br></pre></td></tr></table></figure>
-</li>
+        <span itemprop="articleBody"><h2 id="什么是infer">什么是infer</h2><p>facebook推出的静态代码检测工具，可以检测android和IOS应用的内存泄露和空指针问题。<br><a id="more"></a></p>
+<h2 id="官方文档">官方文档</h2><ul>
+<li><a href="http://fbinfer.com/" target="_blank" rel="external">infer官方介绍</a></li>
+<li><a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">infer编译和安装方法</a></li>
 </ul>
-<p>很奇怪，执行ls命令提示找不到，说明出问题的机器找不到/bin/ls文件，看来是环境变量失效了，那就自己设定一个环境变量吧，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/<span class="built_in">local</span>/games</span><br></pre></td></tr></table></figure></p>
-<p>再次执行ls命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls －al .Xauthority</span><br><span class="line">-rw-－--－--  <span class="number">1</span> staff  staff  <span class="number">2727</span> Mar <span class="number">21</span>  <span class="number">2015</span> .Xauthority</span><br></pre></td></tr></table></figure></p>
-<p>上述结果显示文件是登录用户staff的，它有读写权限，因此没有问题，排除这种情况。<br>当然如果真的是这个问题可以执行以下命令解决<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown staff:staff .Xauthority</span><br></pre></td></tr></table></figure></p>
-<h2 id="文件问题（-Xauthority）">文件问题（.Xauthority）</h2><p>继续google我们发现另一种解决办法：</p>
-<ul>
-<li>ctrl＋alt＋f1切换到命令行模式</li>
-<li>rm -rf .Xauthority</li>
-<li>ctrl＋alt＋f7切换回登录窗口</li>
-<li>输入用户名密码登录<br>按照上述方法执行一次，问题依旧，无奈!</li>
-</ul>
-<h2 id="分析登录日志">分析登录日志</h2><p>以上方法都失效了，继续盲目的google看来意义不大。我们想到了系统日志，说干就干，再次进入命令行模式，查看文件/usr/log/auth.log。<br>通过auth.log的错误日志，我们花了近2小时尝试了很多办法，比较有代表性的解决方案有：<br>(1) 更新系统插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update </span><br><span class="line">$ sudo apt-get upgrade</span><br></pre></td></tr></table></figure></p>
-<p>(2) 将部分系统插件会退到旧版本<br>尝试这两种方法是因为同事说在配置服务器的过程中点击了系统插件的更新，从错误日志中显示可能是插件不兼容导致。<br>(3) 更换桌面，切换成<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install xubuntu-desktop</span><br></pre></td></tr></table></figure></p>
-<p>怀疑是gnome桌面出问题了，安装新的桌面可以解决这类问题。<br>很不幸的是所有的解决办法都失败了，我们这时快要崩溃了。</p>
-<h2 id="回归现象，峰回路转">回归现象，峰回路转</h2><p>在长时间折腾不出解决方案后，我们暂时放弃了，喝喝水并出去溜达了一圈。路上不时的想起定位过程，很快我们注意到第一步中那个奇怪的现象：“ls命令找不到，环境变量实效了！”。我们知道linux启动的时候是默认会初始化环境变量的，即unbuntu默认环境变量中应该会有这个值：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/sbin:/</span>usr<span class="regexp">/local/</span><span class="string">bin:</span><span class="regexp">/sbin:/</span><span class="string">bin:</span><span class="regexp">/usr/</span><span class="string">sbin:</span><span class="regexp">/usr/</span><span class="string">bin:</span><span class="regexp">/usr/</span><span class="string">games:</span><span class="regexp">/usr/</span>local/games</span><br></pre></td></tr></table></figure></p>
-<p>快速回到工位，重启电脑，登录命令行模式，查看机器上的环境变量，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ /bin/<span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/Users/staff/.jenkins/bin</span><br></pre></td></tr></table></figure></p>
-<p>PATH竟然变成了“/Users/staff/.jenkins/bin”。查看jenkins安装指南，我们发现安装过程修改了系统文件/etc/profile，会向这个文件写入jenkins环境变量。查看之：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>cat /etc/profile</span><br><span class="line">... （去除不必要信息的干扰)</span><br><span class="line"><span class="constant">PATH</span>=<span class="regexp">/Users/staff</span><span class="regexp">/.jenkins/bin</span></span><br></pre></td></tr></table></figure></p>
-<p>至此，问题看来已经找到了，linux启动会加载/etc/profile文件配置，因此问题机器PATH会最后修改为“/Users/staff/.jenkins/bin”。而桌面登录时依赖默认的环境变量，因此导致我们输入正确的密码也无法登录。<br>解决方法：将/etc/profile文件中PATH的赋值修改成下列形式。<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">PATH</span>=<span class="variable">$PATH</span><span class="symbol">:/Users/staff/</span>.jenkins/bin</span><br></pre></td></tr></table></figure></p>
-<p>重启机器，输入用户名密码，成功进入系统。</p>
-<h2 id="问题总结">问题总结</h2><ul>
-<li>定位过程其实走了很多弯路，而关键现象却选择性忽略了，不过借此机会也复习和学习了好些linux相关的配置和命令。</li>
-<li>linux系统文件非常敏感，修改时需特别注意<br>系统出问题了，极大的可能是修改了系统文件，因此，一个良好的习惯是系统文件修改前对文件进行备份，然后再进行修改，出问题后直接回滚往往可以马上解决问题。</li>
-<li>当问题出现时，先分析全面问题的现象，然后再想解决方案<br>google大法确实很不错，但是如果盲目的搜索只会让问题更乱，折腾的更辛苦。但是如果分析清楚了现象，有时候自直接就能定位出问题，即使依赖google，现象清楚全面，搜索结果也会更加准确，需要1天解决的问题或许1小时（甚至更短时间）就搞定了。</li>
-<li>问题定位没有头绪了，暂时抛开，或许会有新思路。<br>苏轼说：“不识庐山真面目，只缘身在此山中”，当我们困扰于问题时，可能我们已经纠结于问题的细枝末节了，而不能看到问题的全貌，这时走出庐山（暂时抛开），从不一样的角度去看它时，往往会有意外的收获。</li>
-</ul>
+<h2 id="本文解决问题">本文解决问题</h2><p>使用源码安装的整个过程没有报错，在执行的时候会出现这个错误：<br><strong>Failed to run InferAnalyze binary, exiting</strong></p>
+<h2 id="解决过程">解决过程</h2><p>Google解决方案大部分反馈结果如下：</p>
+<p>About the “Failed to run InferAnalyze binary, exiting” error, you have to compile the binaries of Infer first, please follow the instructions <a href="http://fbinfer.com/docs/getting-started.html" target="_blank" rel="external">here</a>.</p>
+<p>上面的结果让我们先编译infer二进制源码，很奇怪，我们其实进行源码安装的时候<strong>已经编译过了，而且没有报错</strong>。<br>按照上面的方式重新执行错误结果一致。</p>
+<p>回头想想，为什么大部分结果会让我们回去编译？<br>重新翻看Facebook给出的<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">infer编译和安装方法</a>,我们发现大部分该执行的命令都已经执行过了，但是有个比较陌生的插件opam，<strong>它是单独安装的</strong>。<br>会不会是它有什么依赖呢？<br>顺着这个思路很自然在<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">infer编译和安装方法</a>中找到了下面这段话<br><strong>Install Infer from source without opam</strong><br>If for some reason you prefer to install Infer’s OCaml dependencies by some means other than opam, you can still compile Infer by running:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./autogen.sh</span><br><span class="line">./configure</span><br><span class="line">make # or make java</span><br><span class="line"># <span class="operator"><span class="keyword">Install</span> Infer <span class="keyword">into</span> your <span class="keyword">PATH</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">PATH</span>=<span class="string">`pwd`</span>/infer/<span class="keyword">bin</span>:$<span class="keyword">PATH</span></span></span><br></pre></td></tr></table></figure></p>
+<p>执行上述脚本，注意执行./configure程序报错了，但是结果有很明显的提示让你执行：</p>
+<pre><code class="shell">opam pin add --yes --no-action .&#10;opam install --deps-only infer
+</code></pre>
+<p>顺着提示继续执行，发现执行opam install –deps-only infer命令的时候又出错了，但是它依然很人性化的提示你执行下列脚本：</p>
+<pre><code class="shell">opam depext camlp4.4.01+system
+</code></pre>
+<p>执行上述脚本后，将之前执行失败的脚本重新执行，不再出现报错了。<br>最后make编译会执行很长时间，等编译完成后就可以顺利执行infer静态检测内存泄露和空指针异常了。</p>
+<p><strong>注：</strong>在我的unbuntu机器上直接make会报错，因为我只关注Android项目，所以执行的是make java，这样一切正常，现在正在跑项目中。暂时未研究是什么原因导致的，有兴趣的可以一起去研究讨论。</p>
 </span>
       
     </div>
@@ -245,11 +231,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag">#linux</a>
+            <a href="/tags/facebook/" rel="tag">#facebook</a>
           
-            <a href="/tags/unbuntu/" rel="tag">#unbuntu</a>
+            <a href="/tags/infer/" rel="tag">#infer</a>
           
-            <a href="/tags/登录问题，问题定位/" rel="tag">#登录问题，问题定位</a>
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+            <a href="/tags/静态代码扫描/" rel="tag">#静态代码扫描</a>
           
         </div>
       
@@ -258,13 +246,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/30/StoreMails/" rel="prev">javamail使用IMAP协议收取gmail邮件</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/10/LowSpace/" rel="next">Linux中/var空间不足的解决办法</a>
+              <a href="/2015/12/30/StoreMails/" rel="next">javamail使用IMAP协议收取gmail邮件</a>
             
           </div>
         </div>
@@ -290,8 +276,8 @@
             
               <div class="comments" id="comments">
                 
-                  <div class="ds-thread" data-thread-key="2015/12/20/Login/"
-                       data-title="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面" data-url="http://yoursite.com/2015/12/20/Login/">
+                  <div class="ds-thread" data-thread-key="2016/01/26/infer/"
+                       data-title="infer静态代码扫描不能执行问题定位" data-url="http://yoursite.com/2016/01/26/infer/">
                   </div>
                 
               </div>
@@ -380,7 +366,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件权限问题"><span class="nav-number">1.</span> <span class="nav-text">文件权限问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件问题（-Xauthority）"><span class="nav-number">2.</span> <span class="nav-text">文件问题（.Xauthority）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析登录日志"><span class="nav-number">3.</span> <span class="nav-text">分析登录日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归现象，峰回路转"><span class="nav-number">4.</span> <span class="nav-text">回归现象，峰回路转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题总结"><span class="nav-number">5.</span> <span class="nav-text">问题总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是infer"><span class="nav-number">1.</span> <span class="nav-text">什么是infer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档"><span class="nav-number">2.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本文解决问题"><span class="nav-number">3.</span> <span class="nav-text">本文解决问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决过程"><span class="nav-number">4.</span> <span class="nav-text">解决过程</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
