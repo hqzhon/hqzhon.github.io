@@ -1,0 +1,715 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+    
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.4"/>
+
+
+
+
+  <meta name="keywords" content="appium,linux,unbuntu," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="测试小站" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
+
+
+<meta name="description" content="近期发现一款appium小工具，看着功能不错，就在自己的unbuntu机器搭建了一个appium的环境，其中遇到好几个问题，这里将遇到的问题及解决方案分享出来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unbuntu安装和使用appium遇到的问题解决方案">
+<meta property="og:url" content="http://yoursite.com/2016/02/22/appium/index.html">
+<meta property="og:site_name" content="测试小站">
+<meta property="og:description" content="近期发现一款appium小工具，看着功能不错，就在自己的unbuntu机器搭建了一个appium的环境，其中遇到好几个问题，这里将遇到的问题及解决方案分享出来。">
+<meta property="og:updated_time" content="2016-02-22T14:56:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="unbuntu安装和使用appium遇到的问题解决方案">
+<meta name="twitter:description" content="近期发现一款appium小工具，看着功能不错，就在自己的unbuntu机器搭建了一个appium的环境，其中遇到好几个问题，这里将遇到的问题及解决方案分享出来。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post'
+  };
+</script>
+
+    <title> unbuntu安装和使用appium遇到的问题解决方案 // 测试小站 </title>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+
+
+
+<div class="container one-column page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">测试小站</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+        </div>
+    </header>
+
+    <main id="main" class="main">
+        <div class="main-inner">
+            <div id="content" class="content">
+                
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              unbuntu安装和使用appium遇到的问题解决方案
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-02-22T22:56:01+08:00" content="2016-02-22">
+            2016-02-22
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/02/22/appium/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/22/appium/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>近期发现一款appium小工具，看着功能不错，就在自己的unbuntu机器搭建了一个appium的环境，其中遇到好几个问题，这里将遇到的问题及解决方案分享出来。<br><a id="more"></a></p>
+<h2 id="安装后无法使用">安装后无法使用</h2><h3 id="问题">问题</h3><pre><code>Appium will <span class="keyword">not</span> work <span class="keyword">if</span> used <span class="keyword">or</span> installed <span class="keyword">with</span> sudo
+error: Appium will <span class="keyword">not</span> work <span class="keyword">if</span> used <span class="keyword">or</span> installed <span class="keyword">with</span> sudo. Please rerun/install <span class="keyword">as</span> a non-root user. <span class="keyword">If</span> you had <span class="keyword">to</span> install Appium <span class="keyword">using</span> `sudo npm install -g appium`, the solution <span class="keyword">is</span> <span class="keyword">to</span> reinstall Node <span class="keyword">using</span> a <span class="function"><span class="keyword">method</span> <span class="params">(Homebrew, <span class="keyword">for</span> example)</span> <span class="title">that</span> <span class="title">doesn</span>'<span class="title">t</span> <span class="title">require</span> <span class="title">sudo</span> <span class="title">to</span> <span class="title">install</span> <span class="title">global</span> <span class="title">npm</span> <span class="title">packages</span>.
+
+[1]+  <span class="title">Exit</span> 1                  <span class="title">appium</span></span>
+</code></pre><p>该问题显示appium不能使用root用户来安装，不然无法运行，所以需要卸载用root用户安装的appium，该用一般用户来安装。</p>
+<h3 id="解决方案">解决方案</h3><ul>
+<li><p>改变node的所有者</p>
+<pre><code class="shell">cd /usr/local/lib&#10;sudo chown -R bixiaopeng node_modules
+</code></pre>
+</li>
+<li><p>问题1: 卸载appium</p>
+<pre><code class="shell">npm uninstall appium -g
+</code></pre>
+</li>
+<li>重新安装appium<pre><code class="shell">npm install -g appium
+</code></pre>
+</li>
+<li>启动<pre><code class="shell">appium &#38;
+</code></pre>
+</li>
+</ul>
+<h2 id="问题2:_一般用户安装问题">问题2: 一般用户安装问题</h2><h3 id="问题-1">问题</h3><p>非root用户在执行npm install -g appium安装时可能会遇到以下问题</p>
+<pre><code>&gt; ws@<span class="number">0.4</span><span class="number">.31</span> install <span class="regexp">/lib/</span>node_modules<span class="regexp">/appium/</span>node_modules/ws
+&gt; (node-gyp rebuild <span class="number">2</span>&gt; builderror.log) || (exit <span class="number">0</span>)
+
+  CXX(target) Release<span class="regexp">/obj.target/</span>bufferutil<span class="regexp">/src/</span>bufferutil.o
+  SOLINK_MODULE(target) Release/bufferutil.node
+  SOLINK_MODULE(target) Release/bufferutil.<span class="string">node:</span> Finished
+  CXX(target) Release<span class="regexp">/obj.target/</span>validation<span class="regexp">/src/</span>validation.o
+  SOLINK_MODULE(target) Release/validation.node
+  SOLINK_MODULE(target) Release/validation.<span class="string">node:</span> Finished
+npm WARN engine hawk@<span class="number">0.10</span><span class="number">.2</span>: <span class="string">wanted:</span> {<span class="string">"node"</span>:<span class="string">"0.8.x"</span>} (<span class="string">current:</span> {<span class="string">"node"</span>:<span class="string">"v0.10.28"</span>,<span class="string">"npm"</span>:<span class="string">"1.4.15"</span>})
+npm WARN engine cryptiles@<span class="number">0.1</span><span class="number">.3</span>: <span class="string">wanted:</span> {<span class="string">"node"</span>:<span class="string">"0.8.x"</span>} (<span class="string">current:</span> {<span class="string">"node"</span>:<span class="string">"v0.10.28"</span>,<span class="string">"npm"</span>:<span class="string">"1.4.15"</span>})
+npm WARN engine sntp@<span class="number">0.1</span><span class="number">.4</span>: <span class="string">wanted:</span> {<span class="string">"node"</span>:<span class="string">"0.8.x"</span>} (<span class="string">current:</span> {<span class="string">"node"</span>:<span class="string">"v0.10.28"</span>,<span class="string">"npm"</span>:<span class="string">"1.4.15"</span>})
+npm WARN engine hoek@<span class="number">0.7</span><span class="number">.6</span>: <span class="string">wanted:</span> {<span class="string">"node"</span>:<span class="string">"0.8.x"</span>} (<span class="string">current:</span> {<span class="string">"node"</span>:<span class="string">"v0.10.28"</span>,<span class="string">"npm"</span>:<span class="string">"1.4.15"</span>})
+npm WARN engine boom@<span class="number">0.3</span><span class="number">.8</span>: <span class="string">wanted:</span> {<span class="string">"node"</span>:<span class="string">"0.8.x"</span>} (<span class="string">current:</span> {<span class="string">"node"</span>:<span class="string">"v0.10.28"</span>,<span class="string">"npm"</span>:<span class="string">"1.4.15"</span>})
+npm ERR! <span class="string">Error:</span> EACCES, symlink <span class="string">'/lib/node_modules/appium/bin/appium.js'</span>
+npm ERR!  { [<span class="string">Error:</span> EACCES, symlink <span class="string">'/lib/node_modules/appium/bin/appium.js'</span>]
+npm ERR!   <span class="string">errno:</span> <span class="number">3</span>,
+npm ERR!   <span class="string">code:</span> <span class="string">'EACCES'</span>,
+npm ERR!   <span class="string">path:</span> <span class="string">'/lib/node_modules/appium/bin/appium.js'</span> }
+npm ERR! 
+npm ERR! Please <span class="keyword">try</span> running <span class="keyword">this</span> command again <span class="keyword">as</span> root/Administrator.
+
+npm ERR! System Darwin <span class="number">13.2</span><span class="number">.0</span>
+npm ERR! command <span class="string">"node"</span> <span class="string">"/usr/local/bin/npm"</span> <span class="string">"install"</span> <span class="string">"-g"</span> <span class="string">"appium"</span>
+npm ERR! cwd <span class="regexp">/Users/</span>stefanow<span class="regexp">/Code/</span>jqueryuk-workshop-<span class="number">2014</span>
+npm ERR! node -v v0<span class="number">.10</span><span class="number">.28</span>
+npm ERR! npm -v <span class="number">1.4</span><span class="number">.15</span>
+npm ERR! path <span class="regexp">/lib/</span>node_modules<span class="regexp">/appium/</span>bin/appium.js
+npm ERR! code EACCES
+npm ERR! errno <span class="number">3</span>
+npm ERR! stack <span class="string">Error:</span> EACCES, symlink <span class="string">'/lib/node_modules/appium/bin/appium.js'</span>
+npm ERR! 
+npm ERR! Additional logging details can be found <span class="string">in:</span>
+npm ERR!     <span class="regexp">/Users/</span>stefanow<span class="regexp">/Code/</span>jqueryuk-workshop-<span class="number">2014</span>/npm-debug.log
+npm ERR! not ok code <span class="number">0</span>
+</code></pre><p>该问题显示没发访问部分文件，请使用root用户重试，很显然是权限不够，但是，问题1已经说过不能使用root用户进行安装。那么关键问题就是怎么解决权限问题了，首先我们想到的是修改目录的权限，执行以下命令：</p>
+<pre><code class="shell">sudo chmod 777 /lib/node_modules -R
+</code></pre>
+<p>但是，重新执行发现问题依旧。<br>查看/lib/node_modules目录，我们发现并没有/lib/node_modules/appium/bin/appium.js文件。显然，该文件是安装时生成的，因此问题应该出在安装起npm上，查看npm相关文档我们发现日志中提到的符号链接的路径是可以修改的，因此，解决权限问题可以将该符号链接修改到用户有权限的目录中。</p>
+<h3 id="解决方案-1">解决方案</h3><ul>
+<li>执行以下命令修改符号链接路径<pre><code class="shell">npm config set prefix &#39;~/.npm-packages&#39;
+</code></pre>
+</li>
+<li>将新路径添加到环境变量<pre><code class="shell">vim .bashrc  # home&#30446;&#24405;&#19979;&#25191;&#34892;&#10;source .bashrc&#10;export PATH=&#34;$PATH:$HOME/.npm-packages/bin&#34;
+</code></pre>
+</li>
+</ul>
+<h2 id="问题3:_appium启动问题">问题3: appium启动问题</h2><h3 id="问题-2">问题</h3><p>appium启动时可能会遇到下列问题</p>
+<pre><code>zhonghq@zhonghq:~$ appium
+error: uncaughtException: fn must be a function
+
+<span class="type">See</span> http://goo.gl/<span class="number">916</span>lJJ
+date=<span class="type">Sat</span> <span class="type">Nov</span> <span class="number">21</span> <span class="number">2015</span> <span class="number">10</span>:<span class="number">37</span>:<span class="number">25</span> <span class="type">GMT</span>+<span class="number">0800</span> (<span class="type">HKT</span>), pid=<span class="number">2504</span>, uid=<span class="number">501</span>, gid=<span class="number">20</span>, cwd=/usr/local/lib/node_modules/appium, execPath=/usr/local/bin/node, version=v0.<span class="number">10</span>.<span class="number">34</span>, argv=[node, /usr/local/bin/appium], rss=<span class="number">103559168</span>, heapTotal=<span class="number">86062080</span>, heapUsed=<span class="number">56309664</span>, loadavg=[<span class="number">1</span>.<span class="number">6328125</span>, <span class="number">1</span>.<span class="number">86767578125</span>, <span class="number">1</span>.<span class="number">81103515625</span>], uptime=<span class="number">39552</span>, trace=[column=<span class="number">15</span>, file=/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/node_modules/appium-jsonwp-proxy/node_modules/appium-support/node_modules/bluebird/js/main/promisify.js, function=<span class="type">Function</span>.<span class="type">Promise</span>.promisify, line=<span class="number">268</span>, <span class="keyword">method</span>=<span class="type">Promise</span>.promisify, native=<span class="literal">false</span>, column=<span class="number">13</span>, file=lib/fs.js, function=, line=<span class="number">46</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">26</span>, file=module.js, function=<span class="type">Module</span>._compile, line=<span class="number">456</span>, <span class="keyword">method</span>=_compile, native=<span class="literal">false</span>, column=<span class="number">10</span>, file=module.js, function=<span class="type">Object</span>.<span class="type">Module</span>._extensions..js, line=<span class="number">474</span>, <span class="keyword">method</span>=<span class="type">Module</span>._extensions..js, native=<span class="literal">false</span>, column=<span class="number">32</span>, file=module.js, function=<span class="type">Module</span>.load, line=<span class="number">356</span>, <span class="keyword">method</span>=load, native=<span class="literal">false</span>, column=<span class="number">12</span>, file=module.js, function=<span class="type">Function</span>.<span class="type">Module</span>._load, line=<span class="number">312</span>, <span class="keyword">method</span>=<span class="type">Module</span>._load, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=<span class="type">Module</span>.require, line=<span class="number">364</span>, <span class="keyword">method</span>=require, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=require, line=<span class="number">380</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">11</span>, file=/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/node_modules/appium-jsonwp-proxy/node_modules/appium-support/build/lib/tempdir.js, function=, line=<span class="number">12</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">26</span>, file=module.js, function=<span class="type">Module</span>._compile, line=<span class="number">456</span>, <span class="keyword">method</span>=_compile, native=<span class="literal">false</span>, column=<span class="number">10</span>, file=module.js, function=<span class="type">Object</span>.<span class="type">Module</span>._extensions..js, line=<span class="number">474</span>, <span class="keyword">method</span>=<span class="type">Module</span>._extensions..js, native=<span class="literal">false</span>, column=<span class="number">32</span>, file=module.js, function=<span class="type">Module</span>.load, line=<span class="number">356</span>, <span class="keyword">method</span>=load, native=<span class="literal">false</span>, column=<span class="number">12</span>, file=module.js, function=<span class="type">Function</span>.<span class="type">Module</span>._load, line=<span class="number">312</span>, <span class="keyword">method</span>=<span class="type">Module</span>._load, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=<span class="type">Module</span>.require, line=<span class="number">364</span>, <span class="keyword">method</span>=require, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=require, line=<span class="number">380</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">19</span>, file=/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/node_modules/appium-jsonwp-proxy/node_modules/appium-support/build/index.js, function=, line=<span class="number">11</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">26</span>, file=module.js, function=<span class="type">Module</span>._compile, line=<span class="number">456</span>, <span class="keyword">method</span>=_compile, native=<span class="literal">false</span>, column=<span class="number">10</span>, file=module.js, function=<span class="type">Object</span>.<span class="type">Module</span>._extensions..js, line=<span class="number">474</span>, <span class="keyword">method</span>=<span class="type">Module</span>._extensions..js, native=<span class="literal">false</span>, column=<span class="number">32</span>, file=module.js, function=<span class="type">Module</span>.load, line=<span class="number">356</span>, <span class="keyword">method</span>=load, native=<span class="literal">false</span>, column=<span class="number">12</span>, file=module.js, function=<span class="type">Function</span>.<span class="type">Module</span>._load, line=<span class="number">312</span>, <span class="keyword">method</span>=<span class="type">Module</span>._load, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=<span class="type">Module</span>.require, line=<span class="number">364</span>, <span class="keyword">method</span>=require, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=require, line=<span class="number">380</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">42</span>, file=lib/proxy.js, function=, line=<span class="number">2</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">26</span>, file=module.js, function=<span class="type">Module</span>._compile, line=<span class="number">456</span>, <span class="keyword">method</span>=_compile, native=<span class="literal">false</span>, column=<span class="number">10</span>, file=module.js, function=<span class="type">Object</span>.<span class="type">Module</span>._extensions..js, line=<span class="number">474</span>, <span class="keyword">method</span>=<span class="type">Module</span>._extensions..js, native=<span class="literal">false</span>, column=<span class="number">32</span>, file=module.js, function=<span class="type">Module</span>.load, line=<span class="number">356</span>, <span class="keyword">method</span>=load, native=<span class="literal">false</span>, column=<span class="number">12</span>, file=module.js, function=<span class="type">Function</span>.<span class="type">Module</span>._load, line=<span class="number">312</span>, <span class="keyword">method</span>=<span class="type">Module</span>._load, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=<span class="type">Module</span>.require, line=<span class="number">364</span>, <span class="keyword">method</span>=require, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=require, line=<span class="number">380</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/node_modules/appium-jsonwp-proxy/build/index.js, function=, line=<span class="number">9</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">26</span>, file=module.js, function=<span class="type">Module</span>._compile, line=<span class="number">456</span>, <span class="keyword">method</span>=_compile, native=<span class="literal">false</span>, column=<span class="number">10</span>, file=module.js, function=<span class="type">Object</span>.<span class="type">Module</span>._extensions..js, line=<span class="number">474</span>, <span class="keyword">method</span>=<span class="type">Module</span>._extensions..js, native=<span class="literal">false</span>, column=<span class="number">32</span>, file=module.js, function=<span class="type">Module</span>.load, line=<span class="number">356</span>, <span class="keyword">method</span>=load, native=<span class="literal">false</span>, column=<span class="number">12</span>, file=module.js, function=<span class="type">Function</span>.<span class="type">Module</span>._load, line=<span class="number">312</span>, <span class="keyword">method</span>=<span class="type">Module</span>._load, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=<span class="type">Module</span>.require, line=<span class="number">364</span>, <span class="keyword">method</span>=require, native=<span class="literal">false</span>, column=<span class="number">17</span>, file=module.js, function=require, line=<span class="number">380</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">28</span>, file=lib/chromedriver.js, function=, line=<span class="number">3</span>, <span class="keyword">method</span>=null, native=<span class="literal">false</span>, column=<span class="number">26</span>, file=module.js, function=<span class="type">Module</span>._compile, line=<span class="number">456</span>, <span class="keyword">method</span>=_compile, native=<span class="literal">false</span>, column=<span class="number">10</span>, file=module.js, function=<span class="type">Object</span>.<span class="type">Module</span>._extensions..js, line=<span class="number">474</span>, <span class="keyword">method</span>=<span class="type">Module</span>._extensions..js, native=<span class="literal">false</span>, column=<span class="number">32</span>, file=module.js, function=<span class="type">Module</span>.load, line=<span class="number">356</span>, <span class="keyword">method</span>=load, native=<span class="literal">false</span>], stack=[<span class="type">TypeError</span>: fn must be a function, , <span class="type">See</span> http://goo.gl/<span class="number">916</span>lJJ, , at <span class="type">Function</span>.<span class="type">Promise</span>.promisify (/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/node_modules/appium-jsonwp-proxy/node_modules/appium-support/node_modules/bluebird/js/main/promisify.js:<span class="number">268</span>:<span class="number">15</span>), at <span class="type">Object</span>.&lt;anonymous&gt; (lib/fs.js:<span class="number">46</span>:<span class="number">13</span>), at <span class="type">Module</span>._compile (module.js:<span class="number">456</span>:<span class="number">26</span>), at <span class="type">Object</span>.<span class="type">Module</span>._extensions..js (module.js:<span class="number">474</span>:<span class="number">10</span>), at <span class="type">Module</span>.load (module.js:<span class="number">356</span>:<span class="number">32</span>), at <span class="type">Function</span>.<span class="type">Module</span>._load (module.js:<span class="number">312</span>:<span class="number">12</span>), at <span class="type">Module</span>.require (module.js:<span class="number">364</span>:<span class="number">17</span>), at require (module.js:<span class="number">380</span>:<span class="number">17</span>), at <span class="type">Object</span>.&lt;anonymous&gt; (/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/node_modules/appium-jsonwp-proxy/node_modules/appium-support/build/lib/tempdir.js:<span class="number">12</span>:<span class="number">11</span>), at <span class="type">Module</span>._compile (module.js:<span class="number">456</span>:<span class="number">26</span>), at <span class="type">Object</span>.<span class="type">Module</span>._extensions..js (module.js:<span class="number">474</span>:<span class="number">10</span>), at <span class="type">Module</span>.load (module.js:<span class="number">356</span>:<span class="number">32</span>), at <span class="type">Function</span>.<span class="type">Module</span>._load (module.js:<span class="number">312</span>:<span class="number">12</span>), at <span class="type">Module</span>.require (module.js:<span class="number">364</span>:<span class="number">17</span>), at require (module.js:<span class="number">380</span>:<span class="number">17</span>), at <span class="type">Object</span>.&lt;anonymous&gt; (/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/node_modules/appium-jsonwp-proxy/node_modules/appium-support/build/index.js:<span class="number">11</span>:<span class="number">19</span>), at <span class="type">Module</span>._compile (module.js:<span class="number">456</span>:<span class="number">26</span>), at <span class="type">Object</span>.<span class="type">Module</span>._extensions..js (module.js:<span class="number">474</span>:<span class="number">10</span>), at <span class="type">Module</span>.load (module.js:<span class="number">356</span>:<span class="number">32</span>), at <span class="type">Function</span>.<span class="type">Module</span>._load (module.js:<span class="number">312</span>:<span class="number">12</span>), at <span class="type">Module</span>.require (module.js:<span class="number">364</span>:<span class="number">17</span>), at require (module.js:<span class="number">380</span>:<span class="number">17</span>), at <span class="type">Object</span>.&lt;anonymous&gt; (lib/proxy.js:<span class="number">2</span>:<span class="number">42</span>), at <span class="type">Module</span>._compile (module.js:<span class="number">456</span>:<span class="number">26</span>), at <span class="type">Object</span>.<span class="type">Module</span>._extensions..js (module.js:<span class="number">474</span>:<span class="number">10</span>), at <span class="type">Module</span>.load (module.js:<span class="number">356</span>:<span class="number">32</span>), at <span class="type">Function</span>.<span class="type">Module</span>._load (module.js:<span class="number">312</span>:<span class="number">12</span>), at <span class="type">Module</span>.require (module.js:<span class="number">364</span>:<span class="number">17</span>), at require (module.js:<span class="number">380</span>:<span class="number">17</span>), at <span class="type">Object</span>.&lt;anonymous&gt; (/usr/local/lib/node_modules/appium/node_modules/appium-chromedriver/node_modules/appium-jsonwp-proxy/build/index.js:<span class="number">9</span>:<span class="number">17</span>), at <span class="type">Module</span>._compile (module.js:<span class="number">456</span>:<span class="number">26</span>), at <span class="type">Object</span>.<span class="type">Module</span>._extensions..js (module.js:<span class="number">474</span>:<span class="number">10</span>), at <span class="type">Module</span>.load (module.js:<span class="number">356</span>:<span class="number">32</span>), at <span class="type">Function</span>.<span class="type">Module</span>._load (module.js:<span class="number">312</span>:<span class="number">12</span>), at <span class="type">Module</span>.require (module.js:<span class="number">364</span>:<span class="number">17</span>), at require (module.js:<span class="number">380</span>:<span class="number">17</span>), at <span class="type">Object</span>.&lt;anonymous&gt; (lib/chromedriver.js:<span class="number">3</span>:<span class="number">28</span>), at <span class="type">Module</span>._compile (module.js:<span class="number">456</span>:<span class="number">26</span>), at <span class="type">Object</span>.<span class="type">Module</span>._extensions..js (module.js:<span class="number">474</span>:<span class="number">10</span>), at <span class="type">Module</span>.load (module.js:<span class="number">356</span>:<span class="number">32</span>)]
+</code></pre><p>google我们发现问题是node.js版本太低导致。<br>首先我们想到的解决方案是直接使用以下命令</p>
+<pre><code class="shell">sudo apt-get update&#10;sudo apt-get install nodejs
+</code></pre>
+<p>很可惜这种方式在unbuntu 14.04默认安装的nodejs版本还是v0.10.34，不支持我们安装的appium（版本1.4.16），那只能采用源码升级方式了。（注：查看nodejs版本号方法node -v，查看appium版本方法appium -v）</p>
+<h3 id="解决方案-2">解决方案</h3><p>源码升级notejs</p>
+<pre><code class="shell"># Using Ubuntu&#10;curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -&#10;sudo apt-get install -y nodejs
+</code></pre>
+<p>将nodejs版本升级到v0.12之后，appium就可以正常执行了。<br>至此大功告成！&gt;_&lt;</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/appium/" rel="tag">#appium</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/unbuntu/" rel="tag">#unbuntu</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/26/infer/" rel="next">infer静态代码扫描不能执行问题定位</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+            </div>
+
+            
+
+            
+              <div class="comments" id="comments">
+                
+                  <div class="ds-thread" data-thread-key="2016/02/22/appium/"
+                       data-title="unbuntu安装和使用appium遇到的问题解决方案" data-url="http://yoursite.com/2016/02/22/appium/">
+                  </div>
+                
+              </div>
+            
+        </div>
+
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/test.png" alt="觅不凡" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">觅不凡</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装后无法使用"><span class="nav-number">1.</span> <span class="nav-text">安装后无法使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">1.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题2:_一般用户安装问题"><span class="nav-number">2.</span> <span class="nav-text">问题2: 一般用户安装问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-1"><span class="nav-number">2.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案-1"><span class="nav-number">2.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题3:_appium启动问题"><span class="nav-number">3.</span> <span class="nav-text">问题3: appium启动问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-2"><span class="nav-number">3.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案-2"><span class="nav-number">3.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">觅不凡</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+        </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+</div>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"hqzhon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = hqzhon
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.4"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.4"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.4" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.4" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (CONFIG.sidebar === 'always') {
+            displaySidebar();
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+<!-- lazyload -->
+<script type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#posts img").lazyload({
+            placeholder: "/images/loading.gif",
+            effect: "fadeIn"
+        });
+    });
+</script>
+</body>
+</html>
