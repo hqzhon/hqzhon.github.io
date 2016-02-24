@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="java,javamail,邮件," />
+  <meta name="keywords" content="facebook,infer,linux,静态代码扫描," />
 
 
 
@@ -37,16 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="年底了，绩效是逃不开的话题，为总结这一年来的工作情况，查看邮件是非常必要的。但是，邮件太多，如何筛选和保留成为一个问题，因此想到实现个自动统计邮件内容的工具，今天分享使用IMAP协议收取gmail邮件的实现方式。">
+<meta name="description" content="facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javamail使用IMAP协议收取gmail邮件">
-<meta property="og:url" content="http://yoursite.com/2015/12/30/StoreMails/index.html">
+<meta property="og:title" content="linux如何编译和安装infer">
+<meta property="og:url" content="http://yoursite.com/2016/02/24/inferCompile/index.html">
 <meta property="og:site_name" content="测试小站">
-<meta property="og:description" content="年底了，绩效是逃不开的话题，为总结这一年来的工作情况，查看邮件是非常必要的。但是，邮件太多，如何筛选和保留成为一个问题，因此想到实现个自动统计邮件内容的工具，今天分享使用IMAP协议收取gmail邮件的实现方式。">
-<meta property="og:updated_time" content="2015-12-30T15:08:41.000Z">
+<meta property="og:description" content="facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。">
+<meta property="og:updated_time" content="2016-02-24T14:50:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javamail使用IMAP协议收取gmail邮件">
-<meta name="twitter:description" content="年底了，绩效是逃不开的话题，为总结这一年来的工作情况，查看邮件是非常必要的。但是，邮件太多，如何筛选和保留成为一个问题，因此想到实现个自动统计邮件内容的工具，今天分享使用IMAP协议收取gmail邮件的实现方式。">
+<meta name="twitter:title" content="linux如何编译和安装infer">
+<meta name="twitter:description" content="facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +56,7 @@
   };
 </script>
 
-    <title> javamail使用IMAP协议收取gmail邮件 // 测试小站 </title>
+    <title> linux如何编译和安装infer // 测试小站 </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -159,7 +159,7 @@
           
           
             
-              javamail使用IMAP协议收取gmail邮件
+              linux如何编译和安装infer
             
           
         </h1>
@@ -168,8 +168,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-12-30T23:08:41+08:00" content="2015-12-30">
-            2015-12-30
+          <time itemprop="dateCreated" datetime="2016-02-24T22:50:14+08:00" content="2016-02-24">
+            2016-02-24
           </time>
         </span>
 
@@ -177,7 +177,7 @@
           <span class="post-category" >
             &nbsp; | &nbsp; 分类于
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
 
               
               
@@ -190,8 +190,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/12/30/StoreMails/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/30/StoreMails/" itemprop="commentsCount"></span>
+              <a href="/2016/02/24/inferCompile/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/24/inferCompile/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -205,14 +205,29 @@
       
 
       
-        <span itemprop="articleBody"><p>年底了，绩效是逃不开的话题，为总结这一年来的工作情况，查看邮件是非常必要的。但是，邮件太多，如何筛选和保留成为一个问题，因此想到实现个自动统计邮件内容的工具，今天分享使用IMAP协议收取gmail邮件的实现方式。<br><a id="more"></a></p>
-<h2 id="准备环境">准备环境</h2><p>新建一个java项目，并从oracle官网下载javamail.jar文件，导入到项目中。</p>
-<h2 id="定义SMTP连接详情">定义SMTP连接详情</h2><p>首先，我们需要定义连接服务器相关的配置详情，如端口／主机名等。<br>在项目根目录下创建smtp.properties文件，并输入以下内容。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mail<span class="class">.smtp</span><span class="class">.host</span>=smtp<span class="class">.gmail</span><span class="class">.com</span></span><br><span class="line">mail<span class="class">.smtp</span><span class="class">.socketFactory</span><span class="class">.port</span>=<span class="number">465</span></span><br><span class="line">mail<span class="class">.smtp</span><span class="class">.socketFactory</span><span class="class">.class</span>=javax<span class="class">.net</span><span class="class">.ssl</span><span class="class">.SSLSocketFactory</span></span><br><span class="line">mail<span class="class">.smtp</span><span class="class">.auth</span>=true</span><br><span class="line">mail<span class="class">.smtp</span><span class="class">.port</span>=<span class="number">465</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="加载配置信息">加载配置信息</h2><p>定义配置信息后，我们需要使用方法加载这些信息，并创建一个邮件会话。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">props.load(<span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"smtp.properties"</span>)));</span><br><span class="line">Session session = Session.getDefaultInstance(props, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure></p>
-<h2 id="连接">连接</h2><p>创建一个store（javax.mail.Store）连接邮件服务器。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Store store = session.getStore(<span class="string">"imaps"</span>);</span><br><span class="line">store.connect(<span class="string">"smtp.gmail.com"</span>, <span class="string">"*************@gmail.com"</span>,<span class="string">"your_password"</span>);</span><br></pre></td></tr></table></figure></p>
-<h2 id="读取收件箱">读取收件箱</h2><p>定义读取gmail收件箱目录。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Folder inbox = store.getFolder(<span class="string">"inbox"</span>);</span><br><span class="line">inbox.open(Folder.READ_ONLY);</span><br></pre></td></tr></table></figure></p>
-<h2 id="读取邮件">读取邮件</h2><p>获取到收件箱目录后，就可以很容易的获取到邮件相关的内容了，下面是获取邮件主题的方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Message[] messages = inbox.getMessages();</span><br><span class="line">System.out.println(<span class="string">"------------------------------"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    System.out.println(<span class="string">"Mail Subject:- "</span> + messages[i].getSubject());      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="完整源码">完整源码</h2><p>下面是完整的源码<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SimpleStoreMails</span> &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</span><br><span class="line">		SimpleStoreMails mail = <span class="keyword">new</span> SimpleStoreMails();</span><br><span class="line">		mail.read();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			props.load(<span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"smtp.properties"</span>)));</span><br><span class="line">			Session session = Session.getDefaultInstance(props, <span class="keyword">null</span>);</span><br><span class="line">			</span><br><span class="line">			Store store = session.getStore(<span class="string">"imaps"</span>);</span><br><span class="line">			store.connect(POP3_SERVER, USER, PWD);</span><br><span class="line">			</span><br><span class="line">			Folder inbox = store.getFolder(<span class="string">"inbox"</span>);</span><br><span class="line">			inbox.open(Folder.READ_ONLY);</span><br><span class="line">			</span><br><span class="line">			Message[] messages = inbox.getMessages();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; inbox.getMessageCount(); i++)&#123;</span><br><span class="line">				Message message = messages[i];</span><br><span class="line">				Date date = message.getSentDate();</span><br><span class="line">				System.<span class="keyword">out</span>.println(<span class="string">"Mail Subject:- "</span> + message.getSubject());</span><br><span class="line">				System.<span class="keyword">out</span>.println(<span class="string">"Mail Content Type:- "</span> + message.getContentType());</span><br><span class="line">				System.<span class="keyword">out</span>.println(<span class="string">"Mail Sent Date:- "</span> + date);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			inbox.close(<span class="keyword">true</span>);</span><br><span class="line">			store.close();</span><br><span class="line">		&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <span itemprop="articleBody"><p>facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。<br><a id="more"></a></p>
+<h2 id="依赖插件">依赖插件</h2><p>插件是编译infer的先决条件，linux下需要依赖的插件如下：</p>
+<ul>
+<li>opam &gt;= 1.2.0</li>
+<li>Python 2.7</li>
+<li>Java (only needed for the Java analysis)</li>
+<li>gcc &gt;= 4.7.2 or clang &gt;= 3.1 (only needed for the C/Objective-C analysis)</li>
+<li>autoconf &gt;= 2.63 and automake &gt;= 1.11.1 (if building from git)</li>
+</ul>
+<h2 id="安装插件">安装插件</h2><p>针对我使用的Ubuntu系统，根据不同的系统版本执行下述命令：</p>
+<h3 id="Ubuntu_14-04_LTS">Ubuntu 14.04 LTS</h3><pre><code class="shell">sudo apt-get update&#10;sudo apt-get upgrade&#10;sudo apt-get install -y \&#10;  autoconf \&#10;  automake \&#10;  build-essential \&#10;  git \&#10;  libgmp-dev \&#10;  libmpc-dev \&#10;  libmpfr-dev \&#10;  m4 \&#10;  openjdk-7-jdk \&#10;  python-software-properties \&#10;  unzip \&#10;  zlib1g-dev
+</code></pre>
+<h3 id="Ubuntu_12-04-4_LTS">Ubuntu 12.04.4 LTS</h3><pre><code class="shell">sudo add-apt-repository ppa:ubuntu-toolchain-r/test&#10;sudo apt-get update&#10;sudo apt-get upgrade&#10;sudo apt-get install -y \&#10;  autoconf \&#10;  automake \&#10;  build-essential \&#10;  g++-4.8 \&#10;  gcc-4.8 \&#10;  git \&#10;  libgmp-dev \&#10;  libmpc-dev \&#10;  libmpfr-dev \&#10;  m4 \&#10;  openjdk-7-jdk \&#10;  python-software-properties \&#10;  unzip \&#10;  zlib1g-dev&#10;sudo update-alternatives \&#10;  --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 \&#10;  --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
+</code></pre>
+<h3 id="设置opam">设置opam</h3><p>据官网所言，opam在Linux的部分发行版本中是缺失的，所以需要自己下载安装：</p>
+<pre><code class="shell">wget https://github.com/ocaml/opam/releases/download/1.2.2/opam-1.2.2-x86_64-Linux&#10;chmod +x opam-1.2.2-x86_64-Linux&#10;sudo cp opam-1.2.2-x86_64-Linux /usr/local/bin/opam&#10;opam init --comp=4.02.3
+</code></pre>
+<h2 id="安装编译">安装编译</h2><p>执行以下命令安装编译：</p>
+<pre><code class="shell"># Checkout Infer&#10;git clone https://github.com/facebook/infer.git&#10;cd infer&#10;./autogen.sh&#10;./configure&#10;make # or make java&#10;# Install Infer into your PATH&#10;export PATH=`pwd`/infer/bin:$PATH
+</code></pre>
+<p>编译完成后，就可以进行代码的静态扫描了，具体使用方式可查考<a href="http://fbinfer.com/docs/hello-world.html" target="_blank" rel="external">infer使用教程</a>。</p>
+<p>如果根据以上方法编译安装后还有问题，可参考<a href="http://hqzhon.cc/2016/01/26/infer/" target="_blank" rel="external">infer静态代码扫描不能执行问题定位</a>。</p>
+<p>参考文档：<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">How to compile and install Infer</a></p>
 </span>
       
     </div>
@@ -221,11 +236,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag">#java</a>
+            <a href="/tags/facebook/" rel="tag">#facebook</a>
           
-            <a href="/tags/javamail/" rel="tag">#javamail</a>
+            <a href="/tags/infer/" rel="tag">#infer</a>
           
-            <a href="/tags/邮件/" rel="tag">#邮件</a>
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+            <a href="/tags/静态代码扫描/" rel="tag">#静态代码扫描</a>
           
         </div>
       
@@ -234,13 +251,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/26/infer/" rel="prev">infer静态代码扫描不能执行问题定位</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/20/Login/" rel="next">登录问题定位过程之unbuntu输入正确密码后重新返回登录界面</a>
+              <a href="/2016/02/22/appium/" rel="next">unbuntu安装和使用appium遇到的问题解决方案</a>
             
           </div>
         </div>
@@ -266,8 +281,8 @@
             
               <div class="comments" id="comments">
                 
-                  <div class="ds-thread" data-thread-key="2015/12/30/StoreMails/"
-                       data-title="javamail使用IMAP协议收取gmail邮件" data-url="http://yoursite.com/2015/12/30/StoreMails/">
+                  <div class="ds-thread" data-thread-key="2016/02/24/inferCompile/"
+                       data-title="linux如何编译和安装infer" data-url="http://yoursite.com/2016/02/24/inferCompile/">
                   </div>
                 
               </div>
@@ -356,7 +371,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备环境"><span class="nav-number">1.</span> <span class="nav-text">准备环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义SMTP连接详情"><span class="nav-number">2.</span> <span class="nav-text">定义SMTP连接详情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载配置信息"><span class="nav-number">3.</span> <span class="nav-text">加载配置信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接"><span class="nav-number">4.</span> <span class="nav-text">连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取收件箱"><span class="nav-number">5.</span> <span class="nav-text">读取收件箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取邮件"><span class="nav-number">6.</span> <span class="nav-text">读取邮件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整源码"><span class="nav-number">7.</span> <span class="nav-text">完整源码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖插件"><span class="nav-number">1.</span> <span class="nav-text">依赖插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装插件"><span class="nav-number">2.</span> <span class="nav-text">安装插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu_14-04_LTS"><span class="nav-number">2.1.</span> <span class="nav-text">Ubuntu 14.04 LTS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu_12-04-4_LTS"><span class="nav-number">2.2.</span> <span class="nav-text">Ubuntu 12.04.4 LTS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置opam"><span class="nav-number">2.3.</span> <span class="nav-text">设置opam</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装编译"><span class="nav-number">3.</span> <span class="nav-text">安装编译</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

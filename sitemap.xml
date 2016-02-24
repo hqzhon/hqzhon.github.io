@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/02/24/inferCompile/</loc>
+    <lastmod>2016-02-24T14:50:14.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/02/22/appium/</loc>
     <lastmod>2016-02-22T14:56:01.000Z</lastmod>
   </url>
