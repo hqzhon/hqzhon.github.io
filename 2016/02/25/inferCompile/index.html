@@ -40,10 +40,10 @@
 <meta name="description" content="facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux如何编译和安装infer">
-<meta property="og:url" content="http://yoursite.com/2016/02/24/inferCompile/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/02/25/inferCompile/index.html">
 <meta property="og:site_name" content="测试小站">
 <meta property="og:description" content="facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。">
-<meta property="og:updated_time" content="2016-02-24T14:50:14.000Z">
+<meta property="og:updated_time" content="2016-02-25T12:57:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux如何编译和安装infer">
 <meta name="twitter:description" content="facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。">
@@ -168,8 +168,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-02-24T22:50:14+08:00" content="2016-02-24">
-            2016-02-24
+          <time itemprop="dateCreated" datetime="2016-02-25T20:57:18+08:00" content="2016-02-25">
+            2016-02-25
           </time>
         </span>
 
@@ -190,8 +190,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/02/24/inferCompile/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/24/inferCompile/" itemprop="commentsCount"></span>
+              <a href="/2016/02/25/inferCompile/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/inferCompile/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -220,7 +220,7 @@
 <h3 id="Ubuntu_12-04-4_LTS">Ubuntu 12.04.4 LTS</h3><pre><code class="shell">sudo add-apt-repository ppa:ubuntu-toolchain-r/test&#10;sudo apt-get update&#10;sudo apt-get upgrade&#10;sudo apt-get install -y \&#10;  autoconf \&#10;  automake \&#10;  build-essential \&#10;  g++-4.8 \&#10;  gcc-4.8 \&#10;  git \&#10;  libgmp-dev \&#10;  libmpc-dev \&#10;  libmpfr-dev \&#10;  m4 \&#10;  openjdk-7-jdk \&#10;  python-software-properties \&#10;  unzip \&#10;  zlib1g-dev&#10;sudo update-alternatives \&#10;  --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 \&#10;  --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
 </code></pre>
 <h3 id="设置opam">设置opam</h3><p>据官网所言，opam在Linux的部分发行版本中是缺失的，所以需要自己下载安装：</p>
-<pre><code class="shell">wget https://github.com/ocaml/opam/releases/download/1.2.2/opam-1.2.2-x86_64-Linux&#10;chmod +x opam-1.2.2-x86_64-Linux&#10;sudo cp opam-1.2.2-x86_64-Linux /usr/local/bin/opam&#10;opam init --comp=4.02.3
+<pre><code class="shell">wget https://github.com/ocaml/opam/releases/download/1.2.2/opam-1.2.2-x86_64-Linux&#10;chmod +x opam-1.2.2-x86_64-Linux&#10;sudo cp opam-1.2.2-x86_64-Linux /usr/local/bin/opam&#10;opam init --comp=4.02.3&#10;eval `opam config env`
 </code></pre>
 <h2 id="安装编译">安装编译</h2><p>执行以下命令安装编译：</p>
 <pre><code class="shell"># Checkout Infer&#10;git clone https://github.com/facebook/infer.git&#10;cd infer&#10;./autogen.sh&#10;./configure&#10;make # or make java&#10;# Install Infer into your PATH&#10;export PATH=`pwd`/infer/bin:$PATH
@@ -281,8 +281,8 @@
             
               <div class="comments" id="comments">
                 
-                  <div class="ds-thread" data-thread-key="2016/02/24/inferCompile/"
-                       data-title="linux如何编译和安装infer" data-url="http://yoursite.com/2016/02/24/inferCompile/">
+                  <div class="ds-thread" data-thread-key="2016/02/25/inferCompile/"
+                       data-title="linux如何编译和安装infer" data-url="http://yoursite.com/2016/02/25/inferCompile/">
                   </div>
                 
               </div>
