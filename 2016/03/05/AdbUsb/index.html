@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="linux,unbuntu,登录问题，问题定位," />
+  <meta name="keywords" content="Ubuntu,android,连接," />
 
 
 
@@ -37,16 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程">
+<meta name="description" content="在Ubuntu系统中，默认情况下一般用户是不能直接访问USB设备的。因此，为了能够让Ubuntu连接上android手机，我们需要做一定的配置。以下介绍几种配置的方法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面">
-<meta property="og:url" content="http://yoursite.com/2015/12/20/Login/index.html">
+<meta property="og:title" content="Ubuntu配置连接android手机">
+<meta property="og:url" content="http://yoursite.com/2016/03/05/AdbUsb/index.html">
 <meta property="og:site_name" content="测试小站">
-<meta property="og:description" content="上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程">
-<meta property="og:updated_time" content="2015-12-20T01:35:08.000Z">
+<meta property="og:description" content="在Ubuntu系统中，默认情况下一般用户是不能直接访问USB设备的。因此，为了能够让Ubuntu连接上android手机，我们需要做一定的配置。以下介绍几种配置的方法。">
+<meta property="og:updated_time" content="2016-03-05T03:50:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面">
-<meta name="twitter:description" content="上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程">
+<meta name="twitter:title" content="Ubuntu配置连接android手机">
+<meta name="twitter:description" content="在Ubuntu系统中，默认情况下一般用户是不能直接访问USB设备的。因此，为了能够让Ubuntu连接上android手机，我们需要做一定的配置。以下介绍几种配置的方法。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +56,7 @@
   };
 </script>
 
-    <title> 登录问题定位过程之unbuntu输入正确密码后重新返回登录界面 // 测试小站 </title>
+    <title> Ubuntu配置连接android手机 // 测试小站 </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -159,7 +159,7 @@
           
           
             
-              登录问题定位过程之unbuntu输入正确密码后重新返回登录界面
+              Ubuntu配置连接android手机
             
           
         </h1>
@@ -168,8 +168,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-12-20T09:35:08+08:00" content="2015-12-20">
-            2015-12-20
+          <time itemprop="dateCreated" datetime="2016-03-05T11:50:33+08:00" content="2016-03-05">
+            2016-03-05
           </time>
         </span>
 
@@ -190,8 +190,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/12/20/Login/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/20/Login/" itemprop="commentsCount"></span>
+              <a href="/2016/03/05/AdbUsb/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/05/AdbUsb/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -205,38 +205,60 @@
       
 
       
-        <span itemprop="articleBody"><p>上周五组内同事搭建了一个jenkins持续集成平台，完善了我们的安卓自动化系统。我们将产品的自动打包集成到里面，当天系统运行正常。周一回来正准备大干一场，突然发现系统无端关机了。OK，关机那就重启吧，半分钟后出现了登录界面，迫不及待的输入密码，［enter］，结果界面一闪又重新回到了登录界面。咦！怎么回事？密码是没问题的，再次输入，现象一样！不会吧，难道系统被我们搞坏了？于是开始了长时间的定位过程。<br><a id="more"></a></p>
-<h2 id="文件权限问题">文件权限问题</h2><p>google搜索发现跟登录相关的文件是用户根目录下的.Xauthority文件，如果没有这个文件的读取权限就会出现“输入正确密码后重新返回登录界面”的问题。解决方法：</p>
+        <span itemprop="articleBody"><p>在Ubuntu系统中，默认情况下一般用户是不能直接访问USB设备的。因此，为了能够让Ubuntu连接上android手机，我们需要做一定的配置。以下介绍几种配置的方法。<br><a id="more"></a></p>
+<h2 id="方法一">方法一</h2><p>android官方网站建议我们采用以下方法配置列表内容</p>
 <ul>
-<li>ctrl＋alt＋f1切换到命令行模式</li>
-<li>使用正确的用户名密码登录。</li>
-<li>在home下查看该文件权限：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls －al .Xauthority</span><br></pre></td></tr></table></figure>
+<li><p>新建规则文件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo touch <span class="regexp">/etc/u</span>dev<span class="regexp">/rules.d/</span><span class="number">51</span>-android.rules</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行命令添加</p>
 </li>
 </ul>
-<p>很奇怪，执行ls命令提示找不到，说明出问题的机器找不到/bin/ls文件，看来是环境变量失效了，那就自己设定一个环境变量吧，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/sbin:/usr/<span class="built_in">local</span>/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/<span class="built_in">local</span>/games</span><br></pre></td></tr></table></figure></p>
-<p>再次执行ls命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls －al .Xauthority</span><br><span class="line">-rw-－--－--  <span class="number">1</span> staff  staff  <span class="number">2727</span> Mar <span class="number">21</span>  <span class="number">2015</span> .Xauthority</span><br></pre></td></tr></table></figure></p>
-<p>上述结果显示文件是登录用户staff的，它有读写权限，因此没有问题，排除这种情况。<br>当然如果真的是这个问题可以执行以下命令解决<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown staff:staff .Xauthority</span><br></pre></td></tr></table></figure></p>
-<h2 id="文件问题（-Xauthority）">文件问题（.Xauthority）</h2><p>继续google我们发现另一种解决办法：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">wget</span> -S -O - <span class="url">http://source.android.com/source/51-android.rules</span> | sed <span class="string">"s/&lt;username&gt;/<span class="variable">$USER</span>/"</span> | sudo tee &gt;/dev/null /etc/udev/rules.d/<span class="number">51</span>-android.rules; <span class="title">sudo</span> udevadm control --reload-rules</span><br></pre></td></tr></table></figure>
+<p>这种方式是android在其服务器中配置好了nexus系列手机的USB连接规则，然后通过命令获取并写入本地规则文件中。<br>但是有以下的缺点：只适合nexus系列手机,且断网情况下没法使用</p>
+<h2 id="方法二">方法二</h2><p>单独配置每一台手机的USB规则</p>
 <ul>
-<li>ctrl＋alt＋f1切换到命令行模式</li>
-<li>rm -rf .Xauthority</li>
-<li>ctrl＋alt＋f7切换回登录窗口</li>
-<li>输入用户名密码登录<br>按照上述方法执行一次，问题依旧，无奈!</li>
+<li>查看当前插入的手机设备信息</li>
 </ul>
-<h2 id="分析登录日志">分析登录日志</h2><p>以上方法都失效了，继续盲目的google看来意义不大。我们想到了系统日志，说干就干，再次进入命令行模式，查看文件/usr/log/auth.log。<br>通过auth.log的错误日志，我们花了近2小时尝试了很多办法，比较有代表性的解决方案有：<br>(1) 更新系统插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update </span><br><span class="line">$ sudo apt-get upgrade</span><br></pre></td></tr></table></figure></p>
-<p>(2) 将部分系统插件会退到旧版本<br>尝试这两种方法是因为同事说在配置服务器的过程中点击了系统插件的更新，从错误日志中显示可能是插件不兼容导致。<br>(3) 更换桌面，切换成<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install xubuntu-desktop</span><br></pre></td></tr></table></figure></p>
-<p>怀疑是gnome桌面出问题了，安装新的桌面可以解决这类问题。<br>很不幸的是所有的解决办法都失败了，我们这时快要崩溃了。</p>
-<h2 id="回归现象，峰回路转">回归现象，峰回路转</h2><p>在长时间折腾不出解决方案后，我们暂时放弃了，喝喝水并出去溜达了一圈。路上不时的想起定位过程，很快我们注意到第一步中那个奇怪的现象：“ls命令找不到，环境变量实效了！”。我们知道linux启动的时候是默认会初始化环境变量的，即unbuntu默认环境变量中应该会有这个值：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/sbin:/</span>usr<span class="regexp">/local/</span><span class="string">bin:</span><span class="regexp">/sbin:/</span><span class="string">bin:</span><span class="regexp">/usr/</span><span class="string">sbin:</span><span class="regexp">/usr/</span><span class="string">bin:</span><span class="regexp">/usr/</span><span class="string">games:</span><span class="regexp">/usr/</span>local/games</span><br></pre></td></tr></table></figure></p>
-<p>快速回到工位，重启电脑，登录命令行模式，查看机器上的环境变量，执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ /bin/<span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/Users/staff/.jenkins/bin</span><br></pre></td></tr></table></figure></p>
-<p>PATH竟然变成了“/Users/staff/.jenkins/bin”。查看jenkins安装指南，我们发现安装过程修改了系统文件/etc/profile，会向这个文件写入jenkins环境变量。查看之：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>cat /etc/profile</span><br><span class="line">... （去除不必要信息的干扰)</span><br><span class="line"><span class="constant">PATH</span>=<span class="regexp">/Users/staff</span><span class="regexp">/.jenkins/bin</span></span><br></pre></td></tr></table></figure></p>
-<p>至此，问题看来已经找到了，linux启动会加载/etc/profile文件配置，因此问题机器PATH会最后修改为“/Users/staff/.jenkins/bin”。而桌面登录时依赖默认的环境变量，因此导致我们输入正确的密码也无法登录。<br>解决方法：将/etc/profile文件中PATH的赋值修改成下列形式。<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">PATH</span>=<span class="variable">$PATH</span><span class="symbol">:/Users/staff/</span>.jenkins/bin</span><br></pre></td></tr></table></figure></p>
-<p>重启机器，输入用户名密码，成功进入系统。</p>
-<h2 id="问题总结">问题总结</h2><ul>
-<li>定位过程其实走了很多弯路，而关键现象却选择性忽略了，不过借此机会也复习和学习了好些linux相关的配置和命令。</li>
-<li>linux系统文件非常敏感，修改时需特别注意<br>系统出问题了，极大的可能是修改了系统文件，因此，一个良好的习惯是系统文件修改前对文件进行备份，然后再进行修改，出问题后直接回滚往往可以马上解决问题。</li>
-<li>当问题出现时，先分析全面问题的现象，然后再想解决方案<br>google大法确实很不错，但是如果盲目的搜索只会让问题更乱，折腾的更辛苦。但是如果分析清楚了现象，有时候自直接就能定位出问题，即使依赖google，现象清楚全面，搜索结果也会更加准确，需要1天解决的问题或许1小时（甚至更短时间）就搞定了。</li>
-<li>问题定位没有头绪了，暂时抛开，或许会有新思路。<br>苏轼说：“不识庐山真面目，只缘身在此山中”，当我们困扰于问题时，可能我们已经纠结于问题的细枝末节了，而不能看到问题的全貌，这时走出庐山（暂时抛开），从不一样的角度去看它时，往往会有意外的收获。</li>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lsusb -v | less</span><br><span class="line"><span class="keyword">Bus</span> <span class="number">001</span> Device <span class="number">027</span>: ID <span class="number">18</span>d1:<span class="number">4e30</span> Google Inc. </span><br><span class="line">Couldn<span class="attribute">'t</span> <span class="keyword">open</span> device, some information will be missing</span><br><span class="line">Device Descriptor:</span><br><span class="line">...</span><br><span class="line">  idVendor           <span class="number">0</span>x046d Google Inc.</span><br><span class="line">  idProduct          <span class="number">0</span>xc31c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置规则</li>
 </ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi <span class="regexp">/etc/u</span>dev<span class="regexp">/rules.d/</span><span class="number">51</span>-android.rules</span><br></pre></td></tr></table></figure>
+<p>加入以下内容<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># adb protocol on passion</span><br><span class="line"><span class="keyword">SUBSYSTEM=="usb", </span><span class="preprocessor">ATTR</span>&#123;idVendor&#125;==<span class="string">"046d"</span>, <span class="preprocessor">ATTR</span>&#123;idProduct&#125;==<span class="string">"c31c"</span>, MODE=<span class="string">"0600"</span>, OWNER=<span class="string">"zhonghq"</span></span><br></pre></td></tr></table></figure></p>
+<p>OWNER为当前登录用户</p>
+<ul>
+<li>重启usb服务</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sudo</span> service udev restart</span><br></pre></td></tr></table></figure>
+<p>这种方法也存在较大的缺点，只能配置一台手机，而且配置操作叫复杂。</p>
+<h2 id="方法三">方法三</h2><p>通用配置，是根据方法二的优化版本</p>
+<ul>
+<li>配置规则</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/udev/rules.d/51-android.rules</span><br></pre></td></tr></table></figure>
+<p>加入以下内容<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">SUBSYSTEM=<span class="value">=<span class="string">"usb"</span>, ENV&#123;DEVTYPE&#125;==<span class="string">"usb_device"</span>, MODE=<span class="string">"0666"</span></span></span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>重启usb服务</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sudo</span> service udev restart</span><br></pre></td></tr></table></figure>
+<p>此方法配置起来方便快捷，无需查看手机的信息，而且能够适配大部分的手机。</p>
+<h2 id="方法四">方法四</h2><p>方法三已经非常实用了，但是在使用过程中，我们还是会发现有部分手机不能连接上，下面这种方法可以作为方法三的辅助。</p>
+<ul>
+<li>查看当前插入的手机设备信息</li>
+</ul>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lsusb -v | less</span><br><span class="line"><span class="keyword">Bus</span> <span class="number">001</span> Device <span class="number">027</span>: ID <span class="number">18</span>d1:<span class="number">4e30</span> Google Inc. </span><br><span class="line">Couldn<span class="attribute">'t</span> <span class="keyword">open</span> device, some information will be missing</span><br><span class="line">Device Descriptor:</span><br><span class="line">...</span><br><span class="line">  idVendor           <span class="number">0</span>x046d Google Inc.</span><br><span class="line">  idProduct          <span class="number">0</span>xc31c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置规则</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.android/adb_usb.ini</span><br></pre></td></tr></table></figure>
+<p>在文件中加入idVendor号<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x046d</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>重启adb服务</li>
+</ul>
+<pre><code class="shell">adb stop-server&#10;adb start-server
+</code></pre>
+<p>参考文档：<a href="http://source.android.com/source/initializing.html" target="_blank" rel="external">Establishing a Build Environment</a></p>
 </span>
       
     </div>
@@ -245,11 +267,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag">#linux</a>
+            <a href="/tags/Ubuntu/" rel="tag">#Ubuntu</a>
           
-            <a href="/tags/unbuntu/" rel="tag">#unbuntu</a>
+            <a href="/tags/android/" rel="tag">#android</a>
           
-            <a href="/tags/登录问题，问题定位/" rel="tag">#登录问题，问题定位</a>
+            <a href="/tags/连接/" rel="tag">#连接</a>
           
         </div>
       
@@ -258,13 +280,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/30/StoreMails/" rel="prev">javamail使用IMAP协议收取gmail邮件</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/10/LowSpace/" rel="next">Linux中/var空间不足的解决办法</a>
+              <a href="/2016/02/25/InferCompile/" rel="next">linux如何编译和安装infer</a>
             
           </div>
         </div>
@@ -290,8 +310,8 @@
             
               <div class="comments" id="comments">
                 
-                  <div class="ds-thread" data-thread-key="2015/12/20/Login/"
-                       data-title="登录问题定位过程之unbuntu输入正确密码后重新返回登录界面" data-url="http://yoursite.com/2015/12/20/Login/">
+                  <div class="ds-thread" data-thread-key="2016/03/05/AdbUsb/"
+                       data-title="Ubuntu配置连接android手机" data-url="http://yoursite.com/2016/03/05/AdbUsb/">
                   </div>
                 
               </div>
@@ -380,7 +400,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件权限问题"><span class="nav-number">1.</span> <span class="nav-text">文件权限问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件问题（-Xauthority）"><span class="nav-number">2.</span> <span class="nav-text">文件问题（.Xauthority）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析登录日志"><span class="nav-number">3.</span> <span class="nav-text">分析登录日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归现象，峰回路转"><span class="nav-number">4.</span> <span class="nav-text">回归现象，峰回路转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题总结"><span class="nav-number">5.</span> <span class="nav-text">问题总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一"><span class="nav-number">1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二"><span class="nav-number">2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三"><span class="nav-number">3.</span> <span class="nav-text">方法三</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法四"><span class="nav-number">4.</span> <span class="nav-text">方法四</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
