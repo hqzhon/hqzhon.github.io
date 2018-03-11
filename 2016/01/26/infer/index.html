@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="facebook,infer,java,静态代码扫描," />
+  <meta name="keywords" content="java,infer,facebook,静态代码扫描," />
 
 
 
@@ -38,11 +38,13 @@
 
 
 <meta name="description" content="什么是inferfacebook推出的静态代码检测工具，可以检测android和IOS应用的内存泄露和空指针问题。">
+<meta name="keywords" content="java,infer,facebook,静态代码扫描">
 <meta property="og:type" content="article">
 <meta property="og:title" content="infer静态代码扫描不能执行问题定位">
 <meta property="og:url" content="http://yoursite.com/2016/01/26/Infer/index.html">
 <meta property="og:site_name" content="测试小站">
 <meta property="og:description" content="什么是inferfacebook推出的静态代码检测工具，可以检测android和IOS应用的内存泄露和空指针问题。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-01-26T05:09:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="infer静态代码扫描不能执行问题定位">
@@ -168,7 +170,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-01-26T13:09:49+08:00" content="2016-01-26">
+          <time itemprop="dateCreated" datetime="2016-01-26T12:55:10+08:00" content="2016-01-26">
             2016-01-26
           </time>
         </span>
@@ -207,14 +209,14 @@
       
         <span itemprop="articleBody"><h2 id="什么是infer">什么是infer</h2><p>facebook推出的静态代码检测工具，可以检测android和IOS应用的内存泄露和空指针问题。<br><a id="more"></a></p>
 <h2 id="官方文档">官方文档</h2><ul>
-<li><a href="http://fbinfer.com/" target="_blank" rel="external">infer官方介绍</a></li>
-<li><a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">infer编译和安装方法</a></li>
+<li><a href="http://fbinfer.com/" target="_blank" rel="noopener">infer官方介绍</a></li>
+<li><a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="noopener">infer编译和安装方法</a></li>
 </ul>
 <h2 id="本文解决问题">本文解决问题</h2><p>使用源码安装的整个过程没有报错，在执行的时候会出现这个错误：<br><strong>Failed to run InferAnalyze binary, exiting</strong></p>
 <h2 id="解决过程">解决过程</h2><p>Google解决方案大部分反馈结果如下：</p>
-<p>About the “Failed to run InferAnalyze binary, exiting” error, you have to compile the binaries of Infer first, please follow the instructions <a href="http://fbinfer.com/docs/getting-started.html" target="_blank" rel="external">here</a>.</p>
+<p>About the “Failed to run InferAnalyze binary, exiting” error, you have to compile the binaries of Infer first, please follow the instructions <a href="http://fbinfer.com/docs/getting-started.html" target="_blank" rel="noopener">here</a>.</p>
 <p>上面的结果让我们先编译infer二进制源码，很奇怪，我们其实进行源码安装的时候<strong>已经编译过了，而且没有报错</strong>。<br>按照上面的方式重新执行错误结果一致。</p>
-<p>回头想想，为什么大部分结果会让我们回去编译？<br>重新翻看Facebook给出的<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">infer编译和安装方法</a>,我们发现大部分该执行的命令都已经执行过了，但是有个比较陌生的插件opam，<strong>它是单独安装的</strong>。<br>会不会是它有什么依赖呢？<br>顺着这个思路很自然在<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">infer编译和安装方法</a>中找到了下面这段话<br><strong>Install Infer from source without opam</strong><br>If for some reason you prefer to install Infer’s OCaml dependencies by some means other than opam, you can still compile Infer by running:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./autogen.sh</span><br><span class="line">./configure</span><br><span class="line">make # or make java</span><br><span class="line"># <span class="operator"><span class="keyword">Install</span> Infer <span class="keyword">into</span> your <span class="keyword">PATH</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">PATH</span>=<span class="string">`pwd`</span>/infer/<span class="keyword">bin</span>:$<span class="keyword">PATH</span></span></span><br></pre></td></tr></table></figure></p>
+<p>回头想想，为什么大部分结果会让我们回去编译？<br>重新翻看Facebook给出的<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="noopener">infer编译和安装方法</a>,我们发现大部分该执行的命令都已经执行过了，但是有个比较陌生的插件opam，<strong>它是单独安装的</strong>。<br>会不会是它有什么依赖呢？<br>顺着这个思路很自然在<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="noopener">infer编译和安装方法</a>中找到了下面这段话<br><strong>Install Infer from source without opam</strong><br>If for some reason you prefer to install Infer’s OCaml dependencies by some means other than opam, you can still compile Infer by running:<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./autogen.sh</span><br><span class="line">./configure</span><br><span class="line">make # or make java</span><br><span class="line"># Install <span class="keyword">Infer</span> <span class="keyword">into</span> your <span class="keyword">PATH</span></span><br><span class="line">export <span class="keyword">PATH</span>=<span class="symbol">`pwd`</span>/<span class="keyword">infer</span>/bin:$<span class="keyword">PATH</span></span><br></pre></td></tr></table></figure></p>
 <p>执行上述脚本，注意执行./configure程序报错了，但是结果有很明显的提示让你执行：</p>
 <pre><code class="shell">opam pin add --yes --no-action .&#10;opam install --deps-only infer
 </code></pre>
@@ -231,11 +233,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/facebook/" rel="tag">#facebook</a>
+            <a href="/tags/java/" rel="tag">#java</a>
           
             <a href="/tags/infer/" rel="tag">#infer</a>
           
-            <a href="/tags/java/" rel="tag">#java</a>
+            <a href="/tags/facebook/" rel="tag">#facebook</a>
           
             <a href="/tags/静态代码扫描/" rel="tag">#静态代码扫描</a>
           
@@ -252,7 +254,7 @@
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/30/StoreMails/" rel="next">javamail使用IMAP协议收取gmail邮件</a>
+              <a href="/2015/12/28/StoreMails/" rel="next">javamail使用IMAP协议收取gmail邮件</a>
             
           </div>
         </div>
@@ -386,7 +388,7 @@
             <div class="copyright" >
   
   &copy; &nbsp; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>

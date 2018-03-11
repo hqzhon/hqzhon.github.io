@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="Singleton,java基础,单例模式,反射," />
+  <meta name="keywords" content="Singleton,单例模式,java基础,反射," />
 
 
 
@@ -38,11 +38,13 @@
 
 
 <meta name="description" content="单例模式是最常见的一个模式，在java中单例模式大量被使用。关于单例模式的实现场景可查看java单例模式。今天介绍如何利用反射来创建单例模式的另一个实例，以及枚举实现单例模式规避反射的原理。">
+<meta name="keywords" content="Singleton,单例模式,java基础,反射">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过反射创建单例模式的另一个实例">
 <meta property="og:url" content="http://yoursite.com/2015/10/05/ReflectionSingleTon/index.html">
 <meta property="og:site_name" content="测试小站">
 <meta property="og:description" content="单例模式是最常见的一个模式，在java中单例模式大量被使用。关于单例模式的实现场景可查看java单例模式。今天介绍如何利用反射来创建单例模式的另一个实例，以及枚举实现单例模式规避反射的原理。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2015-10-05T13:07:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过反射创建单例模式的另一个实例">
@@ -205,11 +207,11 @@
       
 
       
-        <span itemprop="articleBody"><p>单例模式是最常见的一个模式，在java中单例模式大量被使用。关于单例模式的实现场景可查看<a href="http://hqzhon.github.io/2015/09/30/Singleton/" target="_blank" rel="external">java单例模式</a>。今天介绍如何利用反射来创建单例模式的另一个实例，以及枚举实现单例模式规避反射的原理。<br><a id="more"></a></p>
+        <span itemprop="articleBody"><p>单例模式是最常见的一个模式，在java中单例模式大量被使用。关于单例模式的实现场景可查看<a href="http://hqzhon.github.io/2015/09/30/Singleton/" target="_blank" rel="noopener">java单例模式</a>。今天介绍如何利用反射来创建单例模式的另一个实例，以及枚举实现单例模式规避反射的原理。<br><a id="more"></a></p>
 <h2 id="一-_反射创建单例模式的另一个实例">一. 反射创建单例模式的另一个实例</h2><h3 id="1-_实现一个单例模式">1. 实现一个单例模式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhonghq.reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleTon</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingleTon instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingleTon</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleTon <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">            instance = <span class="keyword">new</span> SingleTon();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">single</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"single single"</span>);</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="2-_使用SingleTon">2. 使用SingleTon</h3><p>我们通过正常方式实例化SingleTon，同时通过反射获取SingleTon的instance，对比它们的地址，如果地址不同就表明另一个实例创建成功。</p>
 <p>实现代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhonghq.reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.AccessibleObject;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 正常使用单例模式    </span></span><br><span class="line">        SingleTon singleTon = SingleTon.getInstance();</span><br><span class="line">        System.out.println(<span class="string">"正常使用singleTon："</span>  + singleTon);</span><br><span class="line">        singleTon.single();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使用反射获取instance</span></span><br><span class="line">        Class class1 = Class.forName(<span class="string">"com.zhonghq.reflection.SingleTon"</span>);</span><br><span class="line">        Constructor[]  constructors = class1.getDeclaredConstructors();</span><br><span class="line">        AccessibleObject.setAccessible(constructors, <span class="keyword">true</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (Constructor c : constructors)&#123;</span><br><span class="line">            <span class="keyword">if</span> (c.isAccessible())&#123;</span><br><span class="line">                Object classObject  = c.newInstance();</span><br><span class="line">                System.out.println(<span class="string">"反射使用singleTon："</span> + classObject);</span><br><span class="line">                Method method = class1.getMethod(<span class="string">"single"</span>);</span><br><span class="line">                method.invoke(classObject);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>运行，得到以下结果：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">正常使用singleTon：com<span class="class">.zhonghq</span><span class="class">.reflection</span><span class="class">.SingleTon</span>@<span class="number">728</span>edb84</span><br><span class="line">single single</span><br><span class="line">反射使用singleTon：com<span class="class">.zhonghq</span><span class="class">.reflection</span><span class="class">.SingleTon</span>@edf1de</span><br><span class="line">single single</span><br></pre></td></tr></table></figure></p>
+<p>运行，得到以下结果：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">正常使用singleTon：com<span class="selector-class">.zhonghq</span><span class="selector-class">.reflection</span><span class="selector-class">.SingleTon</span>@<span class="number">728</span>edb84</span><br><span class="line">single single</span><br><span class="line">反射使用singleTon：com<span class="selector-class">.zhonghq</span><span class="selector-class">.reflection</span><span class="selector-class">.SingleTon</span>@edf1de</span><br><span class="line">single single</span><br></pre></td></tr></table></figure></p>
 <p>可以看到两个地址明显不同，另一个实例创建成功。</p>
 <h2 id="二-_枚举方式规避原理">二. 枚举方式规避原理</h2><p>我们同样以代码来查看</p>
 <h3 id="1-_实现枚举单例">1. 实现枚举单例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhonghq.reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> EnumSingleTon &#123;</span><br><span class="line">    instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">single</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"enum single"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -240,9 +242,9 @@ Exception <span class="keyword">in</span> thread <span class="string">"main"</sp
           
             <a href="/tags/Singleton/" rel="tag">#Singleton</a>
           
-            <a href="/tags/java基础/" rel="tag">#java基础</a>
-          
             <a href="/tags/单例模式/" rel="tag">#单例模式</a>
+          
+            <a href="/tags/java基础/" rel="tag">#java基础</a>
           
             <a href="/tags/反射/" rel="tag">#反射</a>
           
@@ -393,7 +395,7 @@ Exception <span class="keyword">in</span> thread <span class="string">"main"</sp
             <div class="copyright" >
   
   &copy; &nbsp; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>

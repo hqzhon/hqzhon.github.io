@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="facebook,infer,linux,静态代码扫描," />
+  <meta name="keywords" content="Ubuntu,android,连接," />
 
 
 
@@ -37,16 +37,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
 
 
-<meta name="description" content="facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。">
+<meta name="description" content="在Ubuntu系统中，默认情况下一般用户是不能直接访问USB设备的。因此，为了能够让Ubuntu连接上android手机，我们需要做一定的配置。以下介绍几种配置的方法。">
+<meta name="keywords" content="Ubuntu,android,连接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux如何编译和安装infer">
-<meta property="og:url" content="http://yoursite.com/2016/02/25/InferCompile/index.html">
+<meta property="og:title" content="Ubuntu配置连接android手机">
+<meta property="og:url" content="http://yoursite.com/2016/03/03/AdbUsb/index.html">
 <meta property="og:site_name" content="测试小站">
-<meta property="og:description" content="facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。">
-<meta property="og:updated_time" content="2016-02-25T12:57:18.000Z">
+<meta property="og:description" content="在Ubuntu系统中，默认情况下一般用户是不能直接访问USB设备的。因此，为了能够让Ubuntu连接上android手机，我们需要做一定的配置。以下介绍几种配置的方法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-03-05T04:08:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux如何编译和安装infer">
-<meta name="twitter:description" content="facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。">
+<meta name="twitter:title" content="Ubuntu配置连接android手机">
+<meta name="twitter:description" content="在Ubuntu系统中，默认情况下一般用户是不能直接访问USB设备的。因此，为了能够让Ubuntu连接上android手机，我们需要做一定的配置。以下介绍几种配置的方法。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +58,7 @@
   };
 </script>
 
-    <title> linux如何编译和安装infer // 测试小站 </title>
+    <title> Ubuntu配置连接android手机 // 测试小站 </title>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 <!--[if lte IE 8]>
@@ -159,7 +161,7 @@
           
           
             
-              linux如何编译和安装infer
+              Ubuntu配置连接android手机
             
           
         </h1>
@@ -168,8 +170,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-02-25T20:57:18+08:00" content="2016-02-25">
-            2016-02-25
+          <time itemprop="dateCreated" datetime="2016-03-03T23:06:43+08:00" content="2016-03-03">
+            2016-03-03
           </time>
         </span>
 
@@ -190,8 +192,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/02/25/InferCompile/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/InferCompile/" itemprop="commentsCount"></span>
+              <a href="/2016/03/03/AdbUsb/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/03/AdbUsb/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -205,29 +207,60 @@
       
 
       
-        <span itemprop="articleBody"><p>facebook推出infer静态代码检测工具编译和安装是相对复杂的一个操作，官方文档是英文的，安装顺序也有点乱，而且部分依赖插件也没有给出安装步骤，如果安装的时候不注意很容易导致问题。因此，将我在Linux上的安装过程分享出来，作为一份中文参考文档。<br><a id="more"></a></p>
-<h2 id="依赖插件">依赖插件</h2><p>插件是编译infer的先决条件，linux下需要依赖的插件如下：</p>
+        <span itemprop="articleBody"><p>在Ubuntu系统中，默认情况下一般用户是不能直接访问USB设备的。因此，为了能够让Ubuntu连接上android手机，我们需要做一定的配置。以下介绍几种配置的方法。<br><a id="more"></a></p>
+<h2 id="方法一">方法一</h2><p>android官方网站建议我们采用以下方法配置列表内容</p>
 <ul>
-<li>opam &gt;= 1.2.0</li>
-<li>Python 2.7</li>
-<li>Java (only needed for the Java analysis)</li>
-<li>gcc &gt;= 4.7.2 or clang &gt;= 3.1 (only needed for the C/Objective-C analysis)</li>
-<li>autoconf &gt;= 2.63 and automake &gt;= 1.11.1 (if building from git)</li>
+<li><p>新建规则文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo touch <span class="regexp">/etc/u</span>dev<span class="regexp">/rules.d/</span><span class="number">51</span>-android.rules</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行命令添加</p>
+</li>
 </ul>
-<h2 id="安装插件">安装插件</h2><p>针对我使用的Ubuntu系统，根据不同的系统版本执行下述命令：</p>
-<h3 id="Ubuntu_14-04_LTS">Ubuntu 14.04 LTS</h3><pre><code class="shell">sudo apt-get update&#10;sudo apt-get upgrade&#10;sudo apt-get install -y \&#10;  autoconf \&#10;  automake \&#10;  build-essential \&#10;  git \&#10;  libgmp-dev \&#10;  libmpc-dev \&#10;  libmpfr-dev \&#10;  m4 \&#10;  openjdk-7-jdk \&#10;  python-software-properties \&#10;  unzip \&#10;  zlib1g-dev
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -S -O - http:<span class="regexp">//</span>source.android.com<span class="regexp">/source/</span><span class="number">51</span>-android.rules | sed <span class="string">"s/&lt;username&gt;/$USER/"</span> | sudo tee &gt;<span class="regexp">/dev/</span>null <span class="regexp">/etc/u</span>dev<span class="regexp">/rules.d/</span><span class="number">51</span>-android.rules; sudo udevadm control --reload-rules</span><br></pre></td></tr></table></figure>
+<p>这种方式是android在其服务器中配置好了nexus系列手机的USB连接规则，然后通过命令获取并写入本地规则文件中。<br>但是有以下的缺点：只适合nexus系列手机,且断网情况下没法使用</p>
+<h2 id="方法二">方法二</h2><p>单独配置每一台手机的USB规则</p>
+<ul>
+<li>查看当前插入的手机设备信息</li>
+</ul>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lsusb -v | less</span><br><span class="line"><span class="keyword">Bus</span> <span class="number">001</span> Device <span class="number">027</span>: ID <span class="number">18</span>d1:<span class="number">4e30</span> Google Inc. </span><br><span class="line">Couldn<span class="symbol">'t</span> <span class="keyword">open</span> device, some information will be missing</span><br><span class="line">Device Descriptor:</span><br><span class="line">...</span><br><span class="line">  idVendor           <span class="number">0</span>x046d Google Inc.</span><br><span class="line">  idProduct          <span class="number">0</span>xc31c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置规则</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi <span class="regexp">/etc/u</span>dev<span class="regexp">/rules.d/</span><span class="number">51</span>-android.rules</span><br></pre></td></tr></table></figure>
+<p>加入以下内容<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># adb protocol on passion</span></span><br><span class="line"><span class="attribute">SUBSYSTEM</span>=="usb", ATTR&#123;idVendor&#125;==<span class="string">"046d"</span>, ATTR&#123;idProduct&#125;==<span class="string">"c31c"</span>, <span class="attribute">MODE</span>=<span class="string">"0600"</span>, <span class="attribute">OWNER</span>=<span class="string">"zhonghq"</span></span><br></pre></td></tr></table></figure></p>
+<p>OWNER为当前登录用户</p>
+<ul>
+<li>重启usb服务</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> service </span>udev restart</span><br></pre></td></tr></table></figure>
+<p>这种方法也存在较大的缺点，只能配置一台手机，而且配置操作叫复杂。</p>
+<h2 id="方法三">方法三</h2><p>通用配置，是根据方法二的优化版本</p>
+<ul>
+<li>配置规则</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/udev/rules.d/51-android.rules</span><br></pre></td></tr></table></figure>
+<p>加入以下内容<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">SUBSYSTEM</span>==<span class="string">"usb"</span>, ENV&#123;DEVTYPE&#125;==<span class="string">"usb_device"</span>, MODE=<span class="string">"0666"</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>重启usb服务</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="built_in"> service </span>udev restart</span><br></pre></td></tr></table></figure>
+<p>此方法配置起来方便快捷，无需查看手机的信息，而且能够适配大部分的手机。</p>
+<h2 id="方法四">方法四</h2><p>方法三已经非常实用了，但是在使用过程中，我们还是会发现有部分手机不能连接上，下面这种方法可以作为方法三的辅助。</p>
+<ul>
+<li>查看当前插入的手机设备信息</li>
+</ul>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lsusb -v | less</span><br><span class="line"><span class="keyword">Bus</span> <span class="number">001</span> Device <span class="number">027</span>: ID <span class="number">18</span>d1:<span class="number">4e30</span> Google Inc. </span><br><span class="line">Couldn<span class="symbol">'t</span> <span class="keyword">open</span> device, some information will be missing</span><br><span class="line">Device Descriptor:</span><br><span class="line">...</span><br><span class="line">  idVendor           <span class="number">0</span>x046d Google Inc.</span><br><span class="line">  idProduct          <span class="number">0</span>xc31c</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置规则</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.android/adb_usb.ini</span><br></pre></td></tr></table></figure>
+<p>在文件中加入idVendor号<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0x046d</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>重启adb服务</li>
+</ul>
+<pre><code class="shell">adb stop-server&#10;adb start-server
 </code></pre>
-<h3 id="Ubuntu_12-04-4_LTS">Ubuntu 12.04.4 LTS</h3><pre><code class="shell">sudo add-apt-repository ppa:ubuntu-toolchain-r/test&#10;sudo apt-get update&#10;sudo apt-get upgrade&#10;sudo apt-get install -y \&#10;  autoconf \&#10;  automake \&#10;  build-essential \&#10;  g++-4.8 \&#10;  gcc-4.8 \&#10;  git \&#10;  libgmp-dev \&#10;  libmpc-dev \&#10;  libmpfr-dev \&#10;  m4 \&#10;  openjdk-7-jdk \&#10;  python-software-properties \&#10;  unzip \&#10;  zlib1g-dev&#10;sudo update-alternatives \&#10;  --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 \&#10;  --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
-</code></pre>
-<h3 id="设置opam">设置opam</h3><p>据官网所言，opam在Linux的部分发行版本中是缺失的，所以需要自己下载安装：</p>
-<pre><code class="shell">wget https://github.com/ocaml/opam/releases/download/1.2.2/opam-1.2.2-x86_64-Linux&#10;chmod +x opam-1.2.2-x86_64-Linux&#10;sudo cp opam-1.2.2-x86_64-Linux /usr/local/bin/opam&#10;opam init --comp=4.02.3&#10;eval `opam config env`
-</code></pre>
-<h2 id="安装编译">安装编译</h2><p>执行以下命令安装编译：</p>
-<pre><code class="shell"># Checkout Infer&#10;git clone https://github.com/facebook/infer.git&#10;cd infer&#10;./autogen.sh&#10;./configure&#10;make # or make java&#10;# Install Infer into your PATH&#10;export PATH=`pwd`/infer/bin:$PATH
-</code></pre>
-<p>编译完成后，就可以进行代码的静态扫描了，具体使用方式可查考<a href="http://fbinfer.com/docs/hello-world.html" target="_blank" rel="external">infer使用教程</a>。</p>
-<p>如果根据以上方法编译安装后还有问题，可参考<a href="http://hqzhon.cc/2016/01/26/infer/" target="_blank" rel="external">infer静态代码扫描不能执行问题定位</a>。</p>
-<p>参考文档：<a href="https://github.com/facebook/infer/blob/master/INSTALL.md#install-the-dependencies" target="_blank" rel="external">How to compile and install Infer</a></p>
+<p>参考文档：<a href="http://source.android.com/source/initializing.html" target="_blank" rel="noopener">Establishing a Build Environment</a></p>
 </span>
       
     </div>
@@ -236,13 +269,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/facebook/" rel="tag">#facebook</a>
+            <a href="/tags/Ubuntu/" rel="tag">#Ubuntu</a>
           
-            <a href="/tags/infer/" rel="tag">#infer</a>
+            <a href="/tags/android/" rel="tag">#android</a>
           
-            <a href="/tags/linux/" rel="tag">#linux</a>
-          
-            <a href="/tags/静态代码扫描/" rel="tag">#静态代码扫描</a>
+            <a href="/tags/连接/" rel="tag">#连接</a>
           
         </div>
       
@@ -251,13 +282,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/05/AdbUsb/" rel="prev">Ubuntu配置连接android手机</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/22/Appium/" rel="next">unbuntu安装和使用appium遇到的问题解决方案</a>
+              <a href="/2016/02/24/InferCompile/" rel="next">linux如何编译和安装infer</a>
             
           </div>
         </div>
@@ -283,8 +312,8 @@
             
               <div class="comments" id="comments">
                 
-                  <div class="ds-thread" data-thread-key="2016/02/25/InferCompile/"
-                       data-title="linux如何编译和安装infer" data-url="http://yoursite.com/2016/02/25/InferCompile/">
+                  <div class="ds-thread" data-thread-key="2016/03/03/AdbUsb/"
+                       data-title="Ubuntu配置连接android手机" data-url="http://yoursite.com/2016/03/03/AdbUsb/">
                   </div>
                 
               </div>
@@ -373,7 +402,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖插件"><span class="nav-number">1.</span> <span class="nav-text">依赖插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装插件"><span class="nav-number">2.</span> <span class="nav-text">安装插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu_14-04_LTS"><span class="nav-number">2.1.</span> <span class="nav-text">Ubuntu 14.04 LTS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu_12-04-4_LTS"><span class="nav-number">2.2.</span> <span class="nav-text">Ubuntu 12.04.4 LTS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置opam"><span class="nav-number">2.3.</span> <span class="nav-text">设置opam</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装编译"><span class="nav-number">3.</span> <span class="nav-text">安装编译</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一"><span class="nav-number">1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二"><span class="nav-number">2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三"><span class="nav-number">3.</span> <span class="nav-text">方法三</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法四"><span class="nav-number">4.</span> <span class="nav-text">方法四</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -391,7 +420,7 @@
             <div class="copyright" >
   
   &copy; &nbsp; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
